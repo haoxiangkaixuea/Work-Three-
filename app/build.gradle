@@ -5,12 +5,22 @@ android {
 
     defaultConfig {
         applicationId "cn.edu.scujcc.workthreeweek"
-        minSdkVersion 28
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        google()
+        jcenter()
     }
 
     buildTypes {
