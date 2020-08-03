@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-
 public class MyDataabaseHelper extends SQLiteOpenHelper {
     //把数据库创建定义为一个字符串常量
     //创建图书数据库

@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    SQLiteDatabase database = mydbHelper.getWritableDatabase();
     private MyDataabaseHelper mydbHelper;
     private Button createDatabase, addDatabase, deteleDatabase, updateDatabase, queryDatabase;
 
@@ -35,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //添加数据
         addDatabase = findViewById(R.id.add_data);
         addDatabase.setOnClickListener(v -> {
+            SQLiteDatabase database = mydbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             //装入数据
             values.put("name", "悲惨世界");
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         //更新数据
         updateDatabase = findViewById(R.id.update_database);
         updateDatabase.setOnClickListener(v -> {
+            SQLiteDatabase database = mydbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put("price", "22");
             //?表示一个占位符，表示更新所有name=？的行，通过第四个参数提供的字符串作为指定的相应的内容
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         //删除数据
         deteleDatabase = findViewById(R.id.detele_database);
         deteleDatabase.setOnClickListener(v -> {
+            SQLiteDatabase database = mydbHelper.getWritableDatabase();
             //要删除在Book数据库中，pages大于33446的书
             database.delete("Book", "pages > ?", new String[]{"33446"});
 
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         //查询数据
         queryDatabase = findViewById(R.id.qurey_data);
         queryDatabase.setOnClickListener(v -> {
+            SQLiteDatabase database = mydbHelper.getWritableDatabase();
             Cursor cursor = database.query("Book", null, null, null,
                     null, null, null);
             if (cursor.moveToFirst()) {
