@@ -1,4 +1,4 @@
-package cn.edu.scujcc.workthreeweek;
+package cn.edu.scujcc.workthreeweek.data.local;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-public class MyDataabaseHelper extends SQLiteOpenHelper {
+public class MyDBHelper extends SQLiteOpenHelper {
     //把数据库创建定义为一个字符串常量
     //创建图书数据库
     public static final String CREATE_BOOK = "create table if not exists Book("
@@ -24,7 +24,7 @@ public class MyDataabaseHelper extends SQLiteOpenHelper {
 
     private Context mContext;
 
-    public MyDataabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public MyDBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 

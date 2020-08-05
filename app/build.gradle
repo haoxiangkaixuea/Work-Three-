@@ -21,6 +21,7 @@ android {
         maven { url 'https://maven.aliyun.com/repository/google/' }
         google()
         jcenter()
+
     }
 
     buildTypes {
