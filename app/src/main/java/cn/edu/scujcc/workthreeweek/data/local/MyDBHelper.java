@@ -7,17 +7,25 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+/**
+ * @author Administrator
+ */
 public class MyDBHelper extends SQLiteOpenHelper {
-    //把数据库创建定义为一个字符串常量
-    //创建图书数据库
+    /**
+     * 把数据库创建定义为一个字符串常量
+     * 创建图书数据库
+     */
     public static final String CREATE_BOOK = "create table if not exists Book("
             + "id integer primary key autoincrement,"
             + "author text,"
             + "price real,"
             + "pages integer,"
             + "name text)";
-    //创建图书类别数据库
-    public static final String CREATE_CATEGROY = "create table if not exists Categroy("
+    /**
+     * 创建图书类别数据库
+     * CREATE_CATEGORY 图书类别数据库
+     */
+    public static final String CREATE_CATEGORY = "create table if not exists Categroy("
             + "id integer primary key autoincrement,"
             + "categroy_name text,"
             + "categroy_code integer)";
@@ -31,7 +39,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_BOOK);
-        sqLiteDatabase.execSQL(CREATE_CATEGROY);
+        sqLiteDatabase.execSQL(CREATE_CATEGORY);
         Toast.makeText(mContext, "Create SQLite Book", Toast.LENGTH_SHORT).show();
     }
 
