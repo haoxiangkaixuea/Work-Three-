@@ -59,7 +59,7 @@ public class HandlerActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                if (status < 100) {
+                if (status < PROGRRESBAR_MAX) {
                     status = startProgressBar();
                     message.what = PROGRRESBAR_STAR;
                     handler.sendMessage(message);

@@ -35,6 +35,7 @@ public class IntentServiceActivity extends AppCompatActivity {
         tvState = findViewById(R.id.tv_state);
         initBroadcast();
         btStart.setOnClickListener(v -> {
+            pb.setVisibility(View.VISIBLE);
             Intent intentService = new Intent(this, MyIntentService.class);
             startService(intentService);
         });
@@ -60,11 +61,10 @@ public class IntentServiceActivity extends AppCompatActivity {
             if (ACTION.equals(intent.getAction())) {
                 int progress = intent.getIntExtra("progress", 0);
                 if (progress > 0 && progress < PROGRRESBAR_MAX) {
-                    pb.setVisibility(View.VISIBLE);
                     tvState.setText(getResources().getString(R.string.progress_star));
                 } else if (progress >= PROGRRESBAR_MAX) {
-                    pb.setVisibility(View.GONE);
                     tvState.setText(getResources().getString(R.string.progress_end));
+                    pb.setVisibility(View.GONE);
                 }
                 pb.setProgress(progress);
             }

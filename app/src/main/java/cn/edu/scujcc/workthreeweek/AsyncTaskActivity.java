@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @author Administrator
  */
 public class AsyncTaskActivity extends AppCompatActivity {
+    public static final int PROGRRESBAR_MAX = 100;
     private Button btStart;
     private ProgressBar pb;
     private TextView tvState;
@@ -45,16 +46,16 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            super.onPreExecute();
             textView.setText(getResources().getString(R.string.progress_star));
             progressBar.setVisibility(View.VISIBLE);
-            super.onPreExecute();
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
             int count = 0;
             try {
-                while (count <= 100) {
+                while (count <= PROGRRESBAR_MAX) {
                     count += 1;
                     Thread.sleep(100);
                     publishProgress(count);
@@ -67,9 +68,9 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
         @Override
         protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
             progressBar.setVisibility(View.GONE);
             progressBar.setProgress(values[0]);
-            super.onProgressUpdate(values);
         }
 
         @Override

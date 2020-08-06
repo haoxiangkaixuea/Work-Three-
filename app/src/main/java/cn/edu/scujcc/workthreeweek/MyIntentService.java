@@ -31,11 +31,16 @@ public class MyIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        while (data <= PROGRRESBAR_MAX) {
+        int date = 0;
+        boolean isRunning = true;
+        while (isRunning) {
             try {
-                data += 1;
+                date++;
+                if (date >= 100) {
+                    isRunning = false;
+                }
                 Thread.sleep(100);
-                sendThreadStatus(data);
+                sendThreadStatus(date);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
