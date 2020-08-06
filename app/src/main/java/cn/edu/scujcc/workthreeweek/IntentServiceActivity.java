@@ -18,6 +18,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  */
 public class IntentServiceActivity extends AppCompatActivity {
     public static final String ACTION = "use IntentService start ProgressBar";
+    public static final int PROGRRESBAR_MAX = 100;
     private LocalBroadcastManager localBroadcastManager;
     private LocalBroadcastReceive localBroadcastReceive;
     private Button btStart;
@@ -58,10 +59,10 @@ public class IntentServiceActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             if (ACTION.equals(intent.getAction())) {
                 int progress = intent.getIntExtra("progress", 0);
-                if (progress > 0 && progress < 100) {
+                if (progress > 0 && progress < PROGRRESBAR_MAX) {
                     pb.setVisibility(View.VISIBLE);
                     tvState.setText(getResources().getString(R.string.progress_star));
-                } else if (progress >= 100) {
+                } else if (progress >= PROGRRESBAR_MAX) {
                     pb.setVisibility(View.GONE);
                     tvState.setText(getResources().getString(R.string.progress_end));
                 }
