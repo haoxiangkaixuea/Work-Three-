@@ -47,8 +47,6 @@ public class AsyncTaskActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            textView.setText(getResources().getString(R.string.progress_star));
-            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -69,12 +67,14 @@ public class AsyncTaskActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            progressBar.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+            textView.setText(getResources().getString(R.string.progress_star));
             progressBar.setProgress(values[0]);
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
+            progressBar.setVisibility(View.GONE);
             textView.setText(getResources().getString(R.string.progress_end));
             super.onPostExecute(result);
         }
