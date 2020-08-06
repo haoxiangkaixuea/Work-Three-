@@ -19,6 +19,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  * @author Administrator
  */
 public class MyIntentService extends IntentService {
+    private int date = 0;
+    private boolean isRunning = true;
     public static final int PROGRRESBAR_MAX = 100;
     private int data = 0;
     private LocalBroadcastManager mLocalBroadcastManager;
@@ -35,7 +37,7 @@ public class MyIntentService extends IntentService {
         boolean isRunning = true;
         while (isRunning) {
             try {
-                date++;
+                date += 1;
                 if (date >= 100) {
                     isRunning = false;
                 }
