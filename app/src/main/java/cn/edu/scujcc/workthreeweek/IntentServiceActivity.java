@@ -41,6 +41,14 @@ public class IntentServiceActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (localBroadcastManager != null && localBroadcastReceive != null) {
+            localBroadcastManager.unregisterReceiver(localBroadcastReceive);
+        }
+    }
+
     private void initBroadcast() {
         if (localBroadcastManager == null) {
             localBroadcastManager = LocalBroadcastManager.getInstance(this);

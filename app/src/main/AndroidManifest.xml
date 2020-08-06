@@ -12,6 +12,11 @@
         <activity
             android:name=".IntentServiceActivity"
             android:label="@string/intentservice_activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
@@ -22,11 +27,6 @@
         <activity
             android:name=".AsyncTaskActivity"
             android:label="@string/asyn_task">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity">
 
