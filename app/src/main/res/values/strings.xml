@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Work Three Week</string>
+    <string name="progress_star">进程开始</string>
+    <string name="progress_status">进程状态</string>
+    <string name="progress_end">进程结束</string>
+    <string name="handler_activity">HandlerActivity</string>
+    <string name="intentservice_activity">IntentServiceActivity</string>
+    <string name="asyn_task">AsynTAskActiivty</string>
 </resources>

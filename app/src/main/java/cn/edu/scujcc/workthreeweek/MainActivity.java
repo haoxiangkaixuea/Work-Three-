@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //创建数据库
         mydbHelper = new MyDBHelper(this, "BookStore", null, 2);
         createDatabase = findViewById(R.id.creare_database);
-        createDatabase.setOnClickListener(v -> {
-            mydbHelper.getWritableDatabase();
-        });
+        createDatabase.setOnClickListener(v -> mydbHelper.getWritableDatabase());
 
         //添加数据
         addDatabase = findViewById(R.id.add_data);

@@ -9,12 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".IntentServiceActivity"
+            android:label="@string/intentservice_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".HandlerActivity"
+            android:label="@string/handler_activity">
+
+        </activity>
+        <activity
+            android:name=".AsyncTaskActivity"
+            android:label="@string/asyn_task">
+
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 
