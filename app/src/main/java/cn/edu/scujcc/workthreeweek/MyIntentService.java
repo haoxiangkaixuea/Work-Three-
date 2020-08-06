@@ -15,8 +15,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  *     desc   : IntentService启动ProgressBar
  *     version: 1.0
  * </pre>
+ *
+ * @author Administrator
  */
 public class MyIntentService extends IntentService {
+    public static final int PROGRRESBAR_MAX = 100;
     private int data = 0;
     private LocalBroadcastManager mLocalBroadcastManager;
 
@@ -28,10 +31,10 @@ public class MyIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        while (data <= 100) {
+        while (data <= PROGRRESBAR_MAX) {
             try {
                 data += 1;
-                Thread.sleep(1000);
+                Thread.sleep(100);
                 sendThreadStatus(data);
             } catch (InterruptedException e) {
                 e.printStackTrace();

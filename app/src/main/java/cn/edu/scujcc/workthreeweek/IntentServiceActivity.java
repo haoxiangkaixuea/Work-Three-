@@ -13,6 +13,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+/**
+ * @author Administrator
+ */
 public class IntentServiceActivity extends AppCompatActivity {
     public static final String ACTION = "use IntentService start ProgressBar";
     private LocalBroadcastManager localBroadcastManager;
@@ -29,14 +32,14 @@ public class IntentServiceActivity extends AppCompatActivity {
         btStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
         tvState = findViewById(R.id.tv_state);
-        InitBroadcast();
+        initBroadcast();
         btStart.setOnClickListener(v -> {
             Intent intentService = new Intent(this, MyIntentService.class);
             startService(intentService);
         });
     }
 
-    private void InitBroadcast() {
+    private void initBroadcast() {
         if (localBroadcastManager == null) {
             localBroadcastManager = LocalBroadcastManager.getInstance(this);
         }

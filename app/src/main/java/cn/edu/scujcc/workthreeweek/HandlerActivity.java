@@ -80,7 +80,7 @@ public class HandlerActivity extends AppCompatActivity {
         while (data <= PROGRRESBAR_MAX) {
             data += 1;
             try {
-                Thread.sleep(PROGRRESBAR_MAX);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

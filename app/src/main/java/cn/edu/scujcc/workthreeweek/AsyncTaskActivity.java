@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Administrator
+ */
 public class AsyncTaskActivity extends AppCompatActivity {
     private Button btStart;
     private ProgressBar pb;
