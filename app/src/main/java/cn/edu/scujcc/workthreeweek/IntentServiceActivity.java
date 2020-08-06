@@ -60,10 +60,10 @@ public class IntentServiceActivity extends AppCompatActivity {
                 int progress = intent.getIntExtra("progress", 0);
                 if (progress > 0 && progress < 100) {
                     pb.setVisibility(View.VISIBLE);
-                    tvState.setText("进程开始");
+                    tvState.setText(getResources().getString(R.string.progress_star));
                 } else if (progress >= 100) {
                     pb.setVisibility(View.GONE);
-                    tvState.setText("进程结束");
+                    tvState.setText(getResources().getString(R.string.progress_end));
                 }
                 pb.setProgress(progress);
             }

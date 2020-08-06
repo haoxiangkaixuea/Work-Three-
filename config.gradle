@@ -1,0 +1,6 @@
+ext{
+    url = [
+            "debug":"https://......",
+            "release":"https://......"
+    ]
+}

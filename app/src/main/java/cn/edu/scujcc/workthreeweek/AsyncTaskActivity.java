@@ -32,7 +32,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
         });
     }
 
-    public static class ProgressBarTask extends AsyncTask<Void, Integer, Boolean> {
+    public class ProgressBarTask extends AsyncTask<Void, Integer, Boolean> {
         @SuppressLint("StaticFieldLeak")
         private TextView textView;
         @SuppressLint("StaticFieldLeak")
@@ -45,7 +45,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            textView.setText("进程开始");
+            textView.setText(getResources().getString(R.string.progress_star));
             progressBar.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
@@ -74,7 +74,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Boolean result) {
-            textView.setText("进程结束");
+            textView.setText(getResources().getString(R.string.progress_end));
             super.onPostExecute(result);
         }
     }
