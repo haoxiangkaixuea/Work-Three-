@@ -13,6 +13,12 @@
         <activity
             android:name=".LitePalActivity"
             android:label="@string/LitePalActivity">
+
+
+        </activity>
+        <activity
+            android:name=".IntentServiceActivity"
+            android:label="@string/intentservice_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,13 +27,10 @@
 
         </activity>
         <activity
-            android:name=".IntentServiceActivity"
-            android:label="@string/intentservice_activity">
+            android:name=".HandlerActivity"
+            android:label="@string/handler_activity">
 
         </activity>
-        <activity
-            android:name=".HandlerActivity"
-            android:label="@string/handler_activity"></activity>
         <activity
             android:name=".AsyncTaskActivity"
             android:label="@string/asyn_task"></activity>

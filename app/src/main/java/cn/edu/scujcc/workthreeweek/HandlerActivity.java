@@ -52,28 +52,29 @@ public class HandlerActivity extends AppCompatActivity {
         btStart.setOnClickListener(v -> {
             pb.setVisibility(View.VISIBLE);
             tvState.setText(getResources().getString(R.string.progress_star));
-        });
-        new Thread() {
-            int status;
-            Message message = new Message();
+            new Thread() {
+                int status;
+                Message message = new Message();
 
-            @Override
-            public void run() {
-                if (status < PROGRRESBAR_MAX) {
-                    status = startProgressBar();
-                    message.what = PROGRRESBAR_STAR;
-                    handler.sendMessage(message);
-                } else if (status == PROGRRESBAR_MAX) {
-                    message.what = PROGRRESBAR_END;
-                    handler.sendMessage(message);
+                @Override
+                public void run() {
+                    if (status < PROGRRESBAR_MAX) {
+                        status = startProgressBar();
+                        message.what = PROGRRESBAR_STAR;
+                        handler.sendMessage(message);
+                    } else if (status == PROGRRESBAR_MAX) {
+                        message.what = PROGRRESBAR_END;
+                        handler.sendMessage(message);
+                    }
                 }
-            }
-        }.start();
+            }.start();
+        });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
     }
 
     private int startProgressBar() {
