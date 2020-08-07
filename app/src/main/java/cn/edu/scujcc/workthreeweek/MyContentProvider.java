@@ -38,7 +38,6 @@ public class MyContentProvider extends ContentProvider {
         if (uriMatcher.match(uri) == OK) {
             SQLiteDatabase db = myDBHelper.getReadableDatabase();
             cursor = db.query(tableName, projection, selection, selectionArgs, null, null, null);
-
         }
         return cursor;
     }
@@ -52,7 +51,7 @@ public class MyContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        Log.e(TAG, "insert: " + values.getAsString("name") + "," + values.getAsInteger("age"));
+        Log.e(TAG, "insert: " + values.getAsString("name") + "," + values.getAsString("author"));
         if (uriMatcher.match(uri) == OK) {
             SQLiteDatabase db = myDBHelper.getWritableDatabase();
             db.insert(tableName, null, values);
