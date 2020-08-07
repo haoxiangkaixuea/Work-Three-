@@ -23,11 +23,11 @@ public class MyIntentService extends IntentService {
     private int date = 0;
     private boolean isRunning = true;
     private int data = 0;
-    private LocalBroadcastManager mLocalBroadcastManager;
+    private LocalBroadcastManager localBroadcastManager;
 
     public MyIntentService() {
         super("MyIntentService");
-        mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
         setIntentRedelivery(true);
     }
 
@@ -52,7 +52,7 @@ public class MyIntentService extends IntentService {
     private void sendThreadStatus(int progress) {
         Intent intent = new Intent(IntentServiceActivity.ACTION);
         intent.putExtra("progress", progress);
-        mLocalBroadcastManager.sendBroadcast(intent);
+        localBroadcastManager.sendBroadcast(intent);
     }
 
     @Override

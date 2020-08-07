@@ -10,6 +10,8 @@ import org.litepal.crud.LitePalSupport;
  *     desc   :
  *     version: 1.0
  * </pre>
+ *
+ * @author Administrator
  */
 public class CategroyModel extends LitePalSupport {
     private int id;

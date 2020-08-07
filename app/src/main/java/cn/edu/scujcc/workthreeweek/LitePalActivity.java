@@ -10,6 +10,9 @@ import org.litepal.LitePal;
 
 import cn.edu.scujcc.workthreeweek.util.LitePalUtils;
 
+/**
+ * @author Administrator
+ */
 public class LitePalActivity extends AppCompatActivity {
     private Button createDatabase;
     private Button addDatabase;
@@ -39,6 +42,7 @@ public class LitePalActivity extends AppCompatActivity {
         updateDatabase.setOnClickListener(v -> {
             LitePalUtils litePalUtils = new LitePalUtils();
             litePalUtils.updateData();
+
             Toast.makeText(LitePalActivity.this, "更新数据成功", Toast.LENGTH_SHORT).show();
         });
 
