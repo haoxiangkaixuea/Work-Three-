@@ -10,15 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LitePalActivity"></activity>
         <activity
-            android:name=".IntentServiceActivity"
-            android:label="@string/intentservice_activity">
+            android:name=".LitePalActivity"
+            android:label="@string/LitePalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".IntentServiceActivity"
+            android:label="@string/intentservice_activity">
+
         </activity>
         <activity
             android:name=".HandlerActivity"

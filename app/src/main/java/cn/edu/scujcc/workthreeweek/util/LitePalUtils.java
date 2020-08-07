@@ -1,13 +1,10 @@
 package cn.edu.scujcc.workthreeweek.util;
 
-import android.widget.TextView;
-
 import org.litepal.LitePal;
 
 import java.util.List;
 
 import cn.edu.scujcc.workthreeweek.LitePalActivity;
-import cn.edu.scujcc.workthreeweek.R;
 import cn.edu.scujcc.workthreeweek.data.model.BookModel;
 
 /**
@@ -22,17 +19,14 @@ import cn.edu.scujcc.workthreeweek.data.model.BookModel;
  * @author Administrator
  */
 public class LitePalUtils extends LitePalActivity {
-    private TextView setText;
 
     public void addData() {
-        setText = findViewById(R.id.set_text);
         BookModel bookModel = new BookModel();
         bookModel.setName("悲惨世界");
         bookModel.setAuthor("雨果");
         bookModel.setPages(52554);
         bookModel.setPrice(43.5);
         bookModel.save();
-        setText.setText("你添加了数据为：" + bookModel.toString());
     }
 
     public void updateData() {
@@ -45,21 +39,16 @@ public class LitePalUtils extends LitePalActivity {
         bookModel.setPrice(10.9);
         bookModel.save();
         bookModel.updateAll("name= ? and author =?", "红楼梦", "曹雪芹");
-        setText.setText("你成功更新了数据");
     }
 
     public void deteleData() {
         LitePal.deleteAll(BookModel.class, "price< ?", "40");
-        setText.setText("你已经删除了数据");
     }
 
     public void queryData() {
         List<BookModel> bookModels = LitePal.findAll(BookModel.class);
         for (BookModel bookModel : bookModels) {
-            setText.setText("name" + bookModel.getName()
-                    + "author" + bookModel.getAuthor()
-                    + "price" + bookModel.getPrice()
-                    + "pages" + bookModel.getPages());
+            BookModel firstBook = LitePal.findFirst(BookModel.class);
         }
     }
 }
