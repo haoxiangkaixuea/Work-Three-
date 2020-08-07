@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
  * @author Administrator
  */
 public class MyDBHelper extends SQLiteOpenHelper {
+
     /**
      * 把数据库创建定义为一个字符串常量
      * 创建图书数据库
@@ -29,8 +30,11 @@ public class MyDBHelper extends SQLiteOpenHelper {
             + "id integer primary key autoincrement,"
             + "categroy_name text,"
             + "categroy_code integer)";
-
     private Context mContext;
+
+    public MyDBHelper(Context context) {
+        super(context, "my.db", null, 1);
+    }
 
     public MyDBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Administrator
@@ -21,9 +23,11 @@ public class HandlerActivity extends AppCompatActivity {
     public static final int PROGRRESBAR_STAR = 1;
     public static final int PROGRRESBAR_END = -1;
     public static final int PROGRRESBAR_MAX = 100;
+    private static ExecutorService executor = new ThreadPoolExecutor(10, 10,
+            60L, TimeUnit.SECONDS,
+            new ArrayBlockingQueue(10));
     public boolean isRunning = true;
     int data = 0;
-    ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
     private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;

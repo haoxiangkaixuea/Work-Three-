@@ -2,33 +2,45 @@ package cn.edu.scujcc.workthreeweek;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-/**
- * <pre>
- *     author : Administrator
- *     e-mail : xxx@xx
- *     time   : 2020/08/07
- *     desc   :
- *     version: 1.0
- * </pre>
- *
- * @author Administrator
- */
+import cn.edu.scujcc.workthreeweek.data.local.MyDBHelper;
+
 public class MyContentProvider extends ContentProvider {
+    private static final String TAG = "MyContentProvider";
+    private static final int OK = 1;
+    static UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
+    static {
+        uriMatcher.addURI("cn.edu.scujcc.workthreeweek", "test", OK);
+    }
+
+    private MyDBHelper myDBHelper;
+    private String tableName = "userInfo";
+
     @Override
     public boolean onCreate() {
+        myDBHelper = new MyDBHelper(getContext());
         return false;
     }
 
     @Nullable
     @Override
-    public Cursor query(@NonNull Uri uri, @Nullable String[] strings, @Nullable String s, @Nullable String[] strings1, @Nullable String s1) {
-        return null;
+    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+        Cursor cursor = null;
+        if (uriMatcher.match(uri) == OK) {
+            SQLiteDatabase db = myDBHelper.getReadableDatabase();
+            cursor = db.query(tableName, projection, selection, selectionArgs, null, null, null);
+
+        }
+        return cursor;
     }
 
     @Nullable
@@ -39,17 +51,38 @@ public class MyContentProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Uri insert(@NonNull Uri uri, @Nullable ContentValues contentValues) {
-        return null;
+    public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        Log.e(TAG, "insert: " + values.getAsString("name") + "," + values.getAsInteger("age"));
+        if (uriMatcher.match(uri) == OK) {
+            SQLiteDatabase db = myDBHelper.getWritableDatabase();
+            db.insert(tableName, null, values);
+            db.close();
+        }
+        return uri;
     }
 
     @Override
-    public int delete(@NonNull Uri uri, @Nullable String s, @Nullable String[] strings) {
+    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+        if (uriMatcher.match(uri) == OK) {
+            SQLiteDatabase db = myDBHelper.getWritableDatabase();
+            db.delete(tableName, selection, selectionArgs);
+            db.close();
+        }
         return 0;
     }
 
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String s, @Nullable String[] strings) {
+    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+        if (uriMatcher.match(uri) == OK) {
+            SQLiteDatabase db = myDBHelper.getWritableDatabase();
+            //values 新内容
+            //selection 判断语句 name=？
+            //selectionArgs 条件判断实体内容参数
+            db.update(tableName, values, selection, selectionArgs);
+            db.close();
+        }
         return 0;
     }
 }
+
+

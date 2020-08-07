@@ -35,6 +35,11 @@
             android:name=".AsyncTaskActivity"
             android:label="@string/asyn_task" />
         <activity android:name=".MainActivity" />
+
+        <provider
+            android:name=".MyContentProvider"
+            android:authorities="cn.edu.scujcc.workthreeweek"
+            android:exported="true" />
     </application>
 
 </manifest>
