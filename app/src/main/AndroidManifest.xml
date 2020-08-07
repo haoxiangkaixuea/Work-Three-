@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.scujcc.workthreeweek">
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -10,13 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConstactsActivity"></activity>
+        <activity android:name=".ListviewItemActivity"></activity>
         <activity
-            android:name=".LitePalActivity"
-            android:label="@string/LitePalActivity"></activity>
-        <activity
-            android:name=".IntentServiceActivity"
-            android:label="@string/intentservice_activity">
+            android:name=".ConstactsActivity"
+            android:label="@string/ConstactsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,8 +23,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".LitePalActivity"
+            android:label="@string/LitePalActivity" />
+        <activity
+            android:name=".IntentServiceActivity"
+            android:label="@string/intentservice_activity"></activity>
+        <activity
             android:name=".HandlerActivity"
-            android:label="@string/handler_activity"></activity>
+            android:label="@string/handler_activity" />
         <activity
             android:name=".AsyncTaskActivity"
             android:label="@string/asyn_task" />

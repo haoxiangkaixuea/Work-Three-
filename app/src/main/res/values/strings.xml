@@ -7,4 +7,5 @@
     <string name="intentservice_activity">IntentServiceActivity</string>
     <string name="asyn_task">AsynTAskActiivty</string>
     <string name="LitePalActivity">LitePalActivity</string>
+    <string name="ConstactsActivity">ConstactsActivity</string>
 </resources>
