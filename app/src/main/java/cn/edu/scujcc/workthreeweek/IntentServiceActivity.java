@@ -21,7 +21,7 @@ public class IntentServiceActivity extends AppCompatActivity {
     public static final int PROGRRESBAR_MAX = 100;
     private LocalBroadcastManager localBroadcastManager;
     private LocalBroadcastReceive localBroadcastReceive;
-    private Button btStart;
+    private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
 
@@ -30,11 +30,11 @@ public class IntentServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intent_service);
 
-        btStart = findViewById(R.id.bt_start);
+        btnStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
         tvState = findViewById(R.id.tv_state);
         initBroadcast();
-        btStart.setOnClickListener(v -> {
+        btnStart.setOnClickListener(v -> {
             pb.setVisibility(View.VISIBLE);
             Intent intentService = new Intent(this, MyIntentService.class);
             startService(intentService);

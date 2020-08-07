@@ -10,12 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ConstactsActivity"></activity>
         <activity
             android:name=".LitePalActivity"
-            android:label="@string/LitePalActivity">
-
-
-        </activity>
+            android:label="@string/LitePalActivity"></activity>
         <activity
             android:name=".IntentServiceActivity"
             android:label="@string/intentservice_activity">
@@ -24,17 +22,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".HandlerActivity"
-            android:label="@string/handler_activity">
-
-        </activity>
+            android:label="@string/handler_activity"></activity>
         <activity
             android:name=".AsyncTaskActivity"
-            android:label="@string/asyn_task"></activity>
-        <activity android:name=".MainActivity"></activity>
+            android:label="@string/asyn_task" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

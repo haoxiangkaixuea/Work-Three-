@@ -13,10 +13,11 @@ import cn.edu.scujcc.workthreeweek.util.DataUtils;
  */
 public class MainActivity extends AppCompatActivity {
     private MyDBHelper mydbHelper;
-    private Button createDatabase;
-    private Button addDatabase;
-    private Button updateDatabase;
-    private Button queryDatabase;
+    private Button btnCreateDatabase;
+    private Button btnAddDatabase;
+    private Button btnUpdateDatabase;
+    private Button btnQueryDatabase;
+    private Button btnDeteleDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
         //创建数据库
         mydbHelper = new MyDBHelper(this, "BookStore", null, 2);
-        createDatabase = findViewById(R.id.creare_database);
-        createDatabase.setOnClickListener(v -> {
+        btnCreateDatabase = findViewById(R.id.creare_database);
+        btnCreateDatabase.setOnClickListener(v -> {
             mydbHelper.getWritableDatabase();
         });
 
         //添加数据
-        addDatabase = findViewById(R.id.add_data);
-        addDatabase.setOnClickListener(v -> {
+        btnAddDatabase = findViewById(R.id.add_data);
+        btnAddDatabase.setOnClickListener(v -> {
             //插入数据
             DataUtils dataUtil = new DataUtils(mydbHelper);
             dataUtil.addData();
@@ -41,22 +42,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //更新数据
-        updateDatabase = findViewById(R.id.updatel_database);
-        updateDatabase.setOnClickListener(v -> {
+        btnUpdateDatabase = findViewById(R.id.updatel_database);
+        btnUpdateDatabase.setOnClickListener(v -> {
             DataUtils dataUtil = new DataUtils(mydbHelper);
             dataUtil.updatetData();
         });
 
         //删除数据
-        Button deteleDatabase = findViewById(R.id.detele_database);
-        deteleDatabase.setOnClickListener(v -> {
+        btnDeteleDatabase = findViewById(R.id.detele_database);
+        btnDeteleDatabase.setOnClickListener(v -> {
             DataUtils dataUtil = new DataUtils(mydbHelper);
             dataUtil.deteleData();
         });
 
         //查询数据
-        queryDatabase = findViewById(R.id.qurey_data);
-        queryDatabase.setOnClickListener(v -> {
+        btnQueryDatabase = findViewById(R.id.qurey_data);
+        btnQueryDatabase.setOnClickListener(v -> {
             DataUtils dataUtil = new DataUtils(mydbHelper);
             dataUtil.qureyData();
         });

@@ -19,7 +19,7 @@ public class HandlerActivity extends AppCompatActivity {
     public static final int PROGRRESBAR_END = -1;
     public static final int PROGRRESBAR_MAX = 100;
     int data = 0;
-    private Button btStart;
+    private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
     private Handler handler = new Handler(Looper.getMainLooper()) {
@@ -46,10 +46,10 @@ public class HandlerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handler);
 
-        btStart = findViewById(R.id.bt_start);
+        btnStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
         tvState = findViewById(R.id.tv_state);
-        btStart.setOnClickListener(v -> {
+        btnStart.setOnClickListener(v -> {
             pb.setVisibility(View.VISIBLE);
             tvState.setText(getResources().getString(R.string.progress_star));
             new Thread() {
