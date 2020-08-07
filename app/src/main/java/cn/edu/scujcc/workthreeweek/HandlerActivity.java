@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 /**
  * @author Administrator
  */
@@ -18,7 +21,9 @@ public class HandlerActivity extends AppCompatActivity {
     public static final int PROGRRESBAR_STAR = 1;
     public static final int PROGRRESBAR_END = -1;
     public static final int PROGRRESBAR_MAX = 100;
+    public boolean isRunning = true;
     int data = 0;
+    ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
     private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
@@ -32,11 +37,27 @@ public class HandlerActivity extends AppCompatActivity {
                     break;
                 case PROGRRESBAR_END:
                     tvState.setText(getResources().getString(R.string.progress_end));
+                    setStop(false);
                     pb.setProgress(data);
                     pb.setVisibility(View.GONE);
                     break;
                 default:
                     break;
+            }
+        }
+    };
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int status = 0;
+            Message message = new Message();
+            if (status < PROGRRESBAR_MAX) {
+                status = startProgressBar();
+                message.what = PROGRRESBAR_STAR;
+                handler.sendMessage(message);
+            } else if (status == PROGRRESBAR_MAX) {
+                message.what = PROGRRESBAR_END;
+                handler.sendMessage(message);
             }
         }
     };
@@ -52,22 +73,22 @@ public class HandlerActivity extends AppCompatActivity {
         btnStart.setOnClickListener(v -> {
             pb.setVisibility(View.VISIBLE);
             tvState.setText(getResources().getString(R.string.progress_star));
-            new Thread() {
-                int status;
-                Message message = new Message();
-
-                @Override
-                public void run() {
-                    if (status < PROGRRESBAR_MAX) {
-                        status = startProgressBar();
-                        message.what = PROGRRESBAR_STAR;
-                        handler.sendMessage(message);
-                    } else if (status == PROGRRESBAR_MAX) {
-                        message.what = PROGRRESBAR_END;
-                        handler.sendMessage(message);
-                    }
-                }
-            }.start();
+//            new Thread() {
+//                int status;
+//                Message message = new Message();
+//
+//                @Override
+//                public void run() {
+//                    if (status < PROGRRESBAR_MAX) {
+//                        status = startProgressBar();
+//                        message.what = PROGRRESBAR_STAR;
+//                        handler.sendMessage(message);
+//                    } else if (status == PROGRRESBAR_MAX) {
+//                        message.what = PROGRRESBAR_END;
+//                        handler.sendMessage(message);
+//                    }
+//                }
+//            }.start();
         });
     }
 
@@ -78,14 +99,22 @@ public class HandlerActivity extends AppCompatActivity {
     }
 
     private int startProgressBar() {
-        while (data <= PROGRRESBAR_MAX) {
-            data += 1;
+        int date = 0;
+        while (isRunning) {
             try {
+                date += 1;
+                if (date >= 100) {
+                    isRunning = false;
+                }
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         return data;
+    }
+
+    public void setStop(boolean stop) {
+        this.isRunning = stop;
     }
 }
