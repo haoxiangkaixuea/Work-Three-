@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_back"
-    tools:context=".no.ContentActivity">
+    tools:context=".no.MainActivity3">
 
     <Button
-        android:id="@+id/creare_database"
+        android:id="@+id/creare_content_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/add_data"
+        android:id="@+id/add_content_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -34,11 +34,11 @@
         android:text="add_data"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/creare_database"
-        app:layout_constraintTop_toBottomOf="@+id/creare_database" />
+        app:layout_constraintStart_toStartOf="@+id/creare_content_database"
+        app:layout_constraintTop_toBottomOf="@+id/creare_content_database" />
 
     <Button
-        android:id="@+id/qurey_data"
+        android:id="@+id/qurey_content_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -49,11 +49,11 @@
         android:text="qurey_data"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/add_data"
-        app:layout_constraintTop_toBottomOf="@+id/add_data" />
+        app:layout_constraintStart_toStartOf="@+id/add_content_data"
+        app:layout_constraintTop_toBottomOf="@+id/add_content_data" />
 
     <Button
-        android:id="@+id/updatel_database"
+        android:id="@+id/updatel_content_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -64,11 +64,11 @@
         android:text="update_database"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/qurey_data"
-        app:layout_constraintTop_toBottomOf="@+id/qurey_data" />
+        app:layout_constraintStart_toStartOf="@+id/qurey_content_data"
+        app:layout_constraintTop_toBottomOf="@+id/qurey_content_data" />
 
     <Button
-        android:id="@+id/detele_database"
+        android:id="@+id/detele_content_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -79,7 +79,19 @@
         android:text="detele_database"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/updatel_database"
-        app:layout_constraintTop_toBottomOf="@+id/updatel_database" />
+        app:layout_constraintStart_toStartOf="@+id/updatel_content_database"
+        app:layout_constraintTop_toBottomOf="@+id/updatel_content_database" />
 
+    <TextView
+        android:id="@+id/show_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:hint="显示查询结果"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detele_content_database" />
 </androidx.constraintlayout.widget.ConstraintLayout>

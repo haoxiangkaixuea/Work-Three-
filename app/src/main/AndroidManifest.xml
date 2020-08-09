@@ -12,32 +12,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ContentProviderActivity"></activity>
-        <activity
-            android:name=".ConstactsActivity"
-            android:label="@string/ConstactsActivity">
+        <activity android:name=".no.MainActivity3">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".no.MainActivity" />
         <activity
             android:name=".LitePalActivity"
             android:label="@string/LitePalActivity" />
         <activity
             android:name=".IntentServiceActivity"
-            android:label="@string/intentservice_activity"></activity>
+            android:label="@string/intentservice_activity" />
         <activity
             android:name=".HandlerActivity"
             android:label="@string/handler_activity" />
         <activity
+            android:name=".no.NewHandlerActivity"
+            android:label="@string/NewHandlerActivity" />
+        <activity
             android:name=".AsyncTaskActivity"
             android:label="@string/asyn_task" />
-        <activity android:name=".ContentActivity" />
 
         <provider
-            android:name=".MyContentProvider"
+            android:name=".no.ContentPro_der"
+            android:authorities="cn.edu.scujcc.workthreeweek.no.contentprovider"
+            android:exported="true" />
+        <provider
+            android:name=".no.MyContentProvider"
             android:authorities="cn.edu.scujcc.workthreeweek"
             android:enabled="true"
             android:exported="true" />

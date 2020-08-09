@@ -1,4 +1,4 @@
-package cn.edu.scujcc.workthreeweek;
+package cn.edu.scujcc.workthreeweek.no;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;

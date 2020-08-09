@@ -28,6 +28,7 @@ public class HandlerActivity extends AppCompatActivity {
             switch (msg.what) {
                 case PROGRRESBAR_STAR:
                     tvState.setText(getResources().getString(R.string.progress_star));
+                    setStop(true);
                     pb.setProgress(data);
                     pb.setVisibility(View.VISIBLE);
                     break;
@@ -42,6 +43,7 @@ public class HandlerActivity extends AppCompatActivity {
             }
         }
     };
+
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -67,8 +69,6 @@ public class HandlerActivity extends AppCompatActivity {
         pb = findViewById(R.id.pb);
         tvState = findViewById(R.id.tv_state);
         btnStart.setOnClickListener(v -> {
-            pb.setVisibility(View.VISIBLE);
-            tvState.setText(getResources().getString(R.string.progress_star));
 //            new Thread() {
 //                int status;
 //                Message message = new Message();
