@@ -108,8 +108,6 @@ ContentProvider是Android4大组件之一，我们平时使用的机会可能比
 
 
 
-![image-20200809110346441](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200809110346441.png)
-
 
 
 - ### 增删查改
@@ -195,7 +193,6 @@ ContentProvider是Android4大组件之一，我们平时使用的机会可能比
 - `Sql` 也有增删改查的方法, 但是 `sql` 只能查询本应用下的数据库。
 - 而 `ContentProvider` 还可以去增删改查本地文件. `xml` 文件的读取等。
 
-![img](https://upload-images.jianshu.io/upload_images/16244318-1cefc2928df2bceb.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
 
 
 
