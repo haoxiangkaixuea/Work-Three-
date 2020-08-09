@@ -16,7 +16,7 @@ import cn.edu.scujcc.workthreeweek.data.local.MyDBHelper;
 /**
  * @author Administrator
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class ContentActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     //获取一个内容解析者
     private ContentResolver contentResolver;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_content);
 
         //创建数据库
         mydbHelper = new MyDBHelper(this, "BookStore", null, 2);

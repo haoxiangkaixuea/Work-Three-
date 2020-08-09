@@ -13,7 +13,7 @@ import org.litepal.crud.LitePalSupport;
  *
  * @author Administrator
  */
-public class CategroyModel extends LitePalSupport {
+public class CategoryModel extends LitePalSupport {
     private int id;
     private String categroyName;
     private String categroyCode;

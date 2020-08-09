@@ -22,12 +22,12 @@ public class MyContentProvider extends ContentProvider {
         uriMatcher.addURI("cn.edu.scujcc.workthreeweek", "test", OK);
     }
 
-    private MyDBHelper myDBHelper;
+    private MyDBHelper dbHelper;
     private String tableName = "userInfo";
 
     @Override
     public boolean onCreate() {
-        myDBHelper = new MyDBHelper(getContext());
+        dbHelper = new MyDBHelper(getContext());
         return false;
     }
 
@@ -36,7 +36,7 @@ public class MyContentProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         Cursor cursor = null;
         if (uriMatcher.match(uri) == OK) {
-            SQLiteDatabase db = myDBHelper.getReadableDatabase();
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
             cursor = db.query(tableName, projection, selection, selectionArgs, null, null, null);
         }
         return cursor;
@@ -53,7 +53,7 @@ public class MyContentProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         Log.e(TAG, "insert: " + values.getAsString("name") + "," + values.getAsString("author"));
         if (uriMatcher.match(uri) == OK) {
-            SQLiteDatabase db = myDBHelper.getWritableDatabase();
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
             db.insert(tableName, null, values);
             db.close();
         }
@@ -63,7 +63,7 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
         if (uriMatcher.match(uri) == OK) {
-            SQLiteDatabase db = myDBHelper.getWritableDatabase();
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
             db.delete(tableName, selection, selectionArgs);
             db.close();
         }
@@ -73,7 +73,7 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         if (uriMatcher.match(uri) == OK) {
-            SQLiteDatabase db = myDBHelper.getWritableDatabase();
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
             //values 新内容
             //selection 判断语句 name=？
             //selectionArgs 条件判断实体内容参数

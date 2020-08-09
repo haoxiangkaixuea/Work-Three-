@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListviewItemActivity"></activity>
+        <activity android:name=".ContentProviderActivity"></activity>
         <activity
             android:name=".ConstactsActivity"
             android:label="@string/ConstactsActivity">
@@ -34,11 +34,12 @@
         <activity
             android:name=".AsyncTaskActivity"
             android:label="@string/asyn_task" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ContentActivity" />
 
         <provider
             android:name=".MyContentProvider"
             android:authorities="cn.edu.scujcc.workthreeweek"
+            android:enabled="true"
             android:exported="true" />
     </application>
 

@@ -5,7 +5,7 @@
     <version value="1" />
     <list>
         <mapping class="cn.edu.scujcc.workthreeweek.data.model.BookModel" />
-        <mapping class="cn.edu.scujcc.workthreeweek.data.model.CategroyModel" />
+        <mapping class="cn.edu.scujcc.workthreeweek.data.model.CategoryModel" />
     </list>
 
 </litepal>

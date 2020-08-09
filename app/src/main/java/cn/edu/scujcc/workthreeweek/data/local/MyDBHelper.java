@@ -22,14 +22,16 @@ public class MyDBHelper extends SQLiteOpenHelper {
             + "price real,"
             + "pages integer,"
             + "name text)";
+
     /**
      * 创建图书类别数据库
      * CREATE_CATEGORY 图书类别数据库
      */
-    public static final String CREATE_CATEGORY = "create table if not exists Categroy("
+    public static final String CREATE_CATEGORY = "create table if not exists Category("
             + "id integer primary key autoincrement,"
             + "categroy_name text,"
             + "categroy_code integer)";
+
     private Context mContext;
 
     public MyDBHelper(Context context) {
@@ -50,6 +52,10 @@ public class MyDBHelper extends SQLiteOpenHelper {
     //更新数据库
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        String createBook = "DROP TABLE IF EXISTS CREATE_BOOK";
+        String createCategory = "DROP TABLE IF EXISTS CREATE_CATEGORY";
+        sqLiteDatabase.execSQL(createBook);
+        sqLiteDatabase.execSQL(createCategory);
         onCreate(sqLiteDatabase);
     }
 }
