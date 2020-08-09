@@ -1,4 +1,4 @@
-package cn.edu.scujcc.workthreeweek.no;
+package cn.edu.scujcc.workthreeweek.test;
 
 import android.app.Application;
 import android.content.Context;

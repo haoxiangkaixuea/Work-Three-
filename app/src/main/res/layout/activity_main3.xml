@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_back"
-    tools:context=".no.MainActivity3">
+    tools:context=".test.MainActivity3">
 
     <Button
         android:id="@+id/creare_content_database"
