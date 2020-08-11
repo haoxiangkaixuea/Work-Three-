@@ -21,6 +21,8 @@ import cn.edu.scujcc.workthreeweek.R;
  *     desc   :
  *     version: 1.0
  * </pre>
+ *
+ * @author Administrator
  */
 public class NewHandlerActivity extends AppCompatActivity {
     public static final int PROGRRESBAR_STAR = 1;

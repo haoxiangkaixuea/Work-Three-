@@ -9,4 +9,5 @@
     <string name="LitePalActivity">LitePalActivity</string>
     <string name="ConstactsActivity">ConstactsActivity</string>
     <string name="NewHandlerActivity">NewHandlerActivity</string>
+    <string name="TestContentActivity">TestContentActivity</string>
 </resources>

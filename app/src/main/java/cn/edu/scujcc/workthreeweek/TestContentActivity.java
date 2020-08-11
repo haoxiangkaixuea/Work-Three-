@@ -1,4 +1,4 @@
-package cn.edu.scujcc.workthreeweek.test;
+package cn.edu.scujcc.workthreeweek;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import cn.edu.scujcc.workthreeweek.R;
 
 /**
  * @author Administrator

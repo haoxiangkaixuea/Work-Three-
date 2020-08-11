@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".test.TestContentActivity">
+        <activity
+            android:name=".TestContentActivity"
+            android:label="@string/TestContentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +39,7 @@
             android:label="@string/asyn_task" />
 
         <provider
-            android:name=".test.TestContentProder"
+            android:name=".TestContentProder"
             android:authorities="cn.edu.scujcc.workthreeweek"
             android:enabled="true"
             android:exported="true" />

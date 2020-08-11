@@ -1,4 +1,4 @@
-package cn.edu.scujcc.workthreeweek.test;
+package cn.edu.scujcc.workthreeweek;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -28,17 +28,24 @@ public class TestContentProder extends ContentProvider {
     public static final int CATEGORY_CODE = 1;
     public static final int BOOKS_CODE = 2;
     public static final int CATEGORYS_CODE = 3;
-    // UriMatcher类使用:在ContentProvider 中注册URI
-    private static final UriMatcher uriMatcher;
-    // 设置ContentProvider的唯一标识
+    /**
+     * URI_MATCHER:在ContentProvider 中注册URI
+     */
+
+    private static final UriMatcher URI_MATCHER;
+
+    /**
+     *   设置ContentProvider的唯一标识
+     */
+
 
     static {
-        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         // 初始化
-        uriMatcher.addURI(AUTOHORITY, "book", BOOK_CODE);
-        uriMatcher.addURI(AUTOHORITY, "category", CATEGORY_CODE);
-        uriMatcher.addURI(AUTOHORITY, "books", BOOKS_CODE);
-        uriMatcher.addURI(AUTOHORITY, "categorys", CATEGORYS_CODE);
+        URI_MATCHER.addURI(AUTOHORITY, "book", BOOK_CODE);
+        URI_MATCHER.addURI(AUTOHORITY, "category", CATEGORY_CODE);
+        URI_MATCHER.addURI(AUTOHORITY, "books", BOOKS_CODE);
+        URI_MATCHER.addURI(AUTOHORITY, "categorys", CATEGORYS_CODE);
         // 若URI资源路径 = content://cn.scu.myprovider/user ，则返回注册码User_Code
         // 若URI资源路径 = content://cn.scu.myprovider/job ，则返回注册码Job_Code
     }
@@ -66,7 +73,7 @@ public class TestContentProder extends ContentProvider {
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         db = dbHelper.getWritableDatabase();
         int deleteRows = 0;
-        switch (uriMatcher.match(uri)) {
+        switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
                 deleteRows = db.delete("book", selection, selectionArgs);
                 break;
@@ -103,7 +110,7 @@ public class TestContentProder extends ContentProvider {
     public Uri insert(Uri uri, ContentValues values) {
         db = dbHelper.getWritableDatabase();
         Uri uriReturn = null;
-        switch (uriMatcher.match(uri)) {
+        switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
             case BOOKS_CODE:
                 long newBookId = db.insert("book", null, values);
@@ -135,7 +142,7 @@ public class TestContentProder extends ContentProvider {
                         String[] selectionArgs, String sortOrder) {
         db = dbHelper.getReadableDatabase();
         Cursor cursor = null;
-        switch (uriMatcher.match(uri)) {
+        switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
                 cursor = db.query("book", projection, selection, selectionArgs, null, null, sortOrder);
                 break;
@@ -169,7 +176,7 @@ public class TestContentProder extends ContentProvider {
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         db = dbHelper.getWritableDatabase();
         int updateRows = 0;
-        switch (uriMatcher.match(uri)) {
+        switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
                 updateRows = db.update("book", values, selection, selectionArgs);
                 break;
