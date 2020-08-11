@@ -1,5 +1,6 @@
 package cn.edu.scujcc.workthreeweek.test;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import cn.edu.scujcc.workthreeweek.R;
@@ -24,53 +26,43 @@ import cn.edu.scujcc.workthreeweek.R;
  *
  * @author Administrator
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class NewHandlerActivity extends AppCompatActivity {
-    public static final int PROGRRESBAR_STAR = 1;
-    public static final int PROGRRESBAR_END = -1;
-    public static final int PROGRRESBAR_MAX = 100;
-    private static final int MSG = 1;
-    private static boolean isRunning;
+    public boolean isRunning = true;
     int data = 0;
     private Button btnStart;
     private ProgressBar pb;
-    private TextView tvState;
-    private int p = 0;//当前进度
-    private Handler handler = new Handler(Looper.getMainLooper()) {
-        public void handlerMessage(Message msg) {
-            switch (msg.what) {
-                case PROGRRESBAR_STAR:
-                    tvState.setText(getResources().getString(R.string.progress_star));
-                    setStop(true);
-                    pb.setProgress(data);
-                    pb.setVisibility(View.VISIBLE);
-                    break;
-                case PROGRRESBAR_END:
-                    tvState.setText(getResources().getString(R.string.progress_end));
-                    setStop(false);
-                    pb.setProgress(data);
-                    pb.setVisibility(View.GONE);
-                    break;
-                default:
-                    break;
+    public Runnable updateThread = new Runnable() {
+        int i = 0;
+
+        @Override
+        public void run() {
+            i += 10;
+            Message msg = updateBarHandler.obtainMessage();
+            msg.arg1 = i;
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //将msg加入到消息队列中
+            updateBarHandler.sendMessage(msg);
+            if (i == 100) {
+                tvState.setText(getResources().getString(R.string.progress_end));
+                updateBarHandler.removeCallbacks(updateThread);
+                pb.setVisibility(View.GONE);
             }
         }
     };
-
-    private static void startProgressBar() {
-        int date = 0;
-        while (isRunning) {
-            try {
-                date += 1;
-                if (date >= 100) {
-                    isRunning = false;
-                }
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    private TextView tvState;
+    //消息异步机制
+    public Handler updateBarHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            pb.setProgress(msg.arg1);
+            updateBarHandler.post(updateThread);
         }
-    }
-
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,13 +72,15 @@ public class NewHandlerActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
         tvState = findViewById(R.id.tv_state);
-        pb.setVisibility(View.VISIBLE);
-
+        btnStart.setOnClickListener(new ButtonListener());
     }
 
-    public void setStop(boolean stop) {
-        isRunning = stop;
+    class ButtonListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            pb.setVisibility(View.VISIBLE);
+            updateBarHandler.post(updateThread);
+            tvState.setText(getResources().getString(R.string.progress_star));
+        }
     }
-
-
 }

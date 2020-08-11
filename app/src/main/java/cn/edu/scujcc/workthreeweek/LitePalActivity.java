@@ -28,35 +28,45 @@ public class LitePalActivity extends AppCompatActivity {
         btnCreateDatabase = findViewById(R.id.creare_litepal_database);
         btnCreateDatabase.setOnClickListener(v -> {
             LitePal.getDatabase();
-            Toast.makeText(LitePalActivity.this, "创建数据库成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LitePalActivity.this,
+                    getResources().getString(R.string.creare_database),
+                    Toast.LENGTH_SHORT).show();
         });
 
         btnAddDatabase = findViewById(R.id.add_litepal_data);
         btnAddDatabase.setOnClickListener(v -> {
             LitePalUtils litePalUtils = new LitePalUtils();
             litePalUtils.addData();
-            Toast.makeText(LitePalActivity.this, "添加数据库成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LitePalActivity.this,
+                    getResources().getString(R.string.add_data),
+                    Toast.LENGTH_SHORT).show();
         });
 
         btnUpdateDatabase = findViewById(R.id.update_litepal_database);
         btnUpdateDatabase.setOnClickListener(v -> {
             LitePalUtils litePalUtils = new LitePalUtils();
             litePalUtils.updateData();
-            Toast.makeText(LitePalActivity.this, "更新数据成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LitePalActivity.this,
+                    getResources().getString(R.string.update_database),
+                    Toast.LENGTH_SHORT).show();
         });
 
         btnDeteleDatabase = findViewById(R.id.detele_litepal_database);
         btnDeteleDatabase.setOnClickListener(v -> {
             LitePalUtils litePalUtils = new LitePalUtils();
             litePalUtils.deteleData();
-            Toast.makeText(LitePalActivity.this, "删除数据成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LitePalActivity.this,
+                    getResources().getString(R.string.delete_database),
+                    Toast.LENGTH_SHORT).show();
         });
 
         btnQueryDatabase = findViewById(R.id.qurey_litepal_data);
         btnQueryDatabase.setOnClickListener(v -> {
             LitePalUtils litePalUtils = new LitePalUtils();
             litePalUtils.queryData();
-            Toast.makeText(LitePalActivity.this, "查询成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LitePalActivity.this,
+                    getResources().getString(R.string.query_database),
+                    Toast.LENGTH_SHORT).show();
         });
     }
 }

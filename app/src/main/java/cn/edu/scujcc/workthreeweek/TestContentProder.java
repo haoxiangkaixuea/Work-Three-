@@ -38,7 +38,6 @@ public class TestContentProder extends ContentProvider {
      *   设置ContentProvider的唯一标识
      */
 
-
     static {
         URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         // 初始化

@@ -17,10 +17,10 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  * @author Administrator
  */
 public class IntentServiceActivity extends AppCompatActivity {
-    public static final String ACTION = "use IntentService start ProgressBar";
+    public static final String ACTION = "cn.edu.scujcc.workthreeweek.IntentServiceActivity";
     public static final int PROGRRESBAR_MAX = 100;
     private LocalBroadcastManager localBroadcastManager;
-    private LocalBroadcastReceive localBroadcastReceive;
+    private MyLocalBroadcastReceive myLocalBroadcastReceive;
     private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
@@ -36,7 +36,7 @@ public class IntentServiceActivity extends AppCompatActivity {
         initBroadcast();
         btnStart.setOnClickListener(v -> {
             pb.setVisibility(View.VISIBLE);
-            Intent intentService = new Intent(this, MyIntentService.class);
+            Intent intentService = new Intent(IntentServiceActivity.this, MyIntentService.class);
             startService(intentService);
         });
     }
@@ -44,8 +44,8 @@ public class IntentServiceActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (localBroadcastManager != null && localBroadcastReceive != null) {
-            localBroadcastManager.unregisterReceiver(localBroadcastReceive);
+        if (localBroadcastManager != null && myLocalBroadcastReceive != null) {
+            localBroadcastManager.unregisterReceiver(myLocalBroadcastReceive);
         }
     }
 
@@ -53,16 +53,16 @@ public class IntentServiceActivity extends AppCompatActivity {
         if (localBroadcastManager == null) {
             localBroadcastManager = LocalBroadcastManager.getInstance(this);
         }
-        if (localBroadcastReceive == null) {
-            localBroadcastReceive = new LocalBroadcastReceive();
+        if (myLocalBroadcastReceive == null) {
+            myLocalBroadcastReceive = new MyLocalBroadcastReceive();
         }
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ACTION);
-        localBroadcastManager.registerReceiver(localBroadcastReceive, intentFilter);
+        localBroadcastManager.registerReceiver(myLocalBroadcastReceive, intentFilter);
     }
 
 
-    public class LocalBroadcastReceive extends BroadcastReceiver {
+    public class MyLocalBroadcastReceive extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {

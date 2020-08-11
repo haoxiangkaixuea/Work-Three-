@@ -10,4 +10,9 @@
     <string name="ConstactsActivity">ConstactsActivity</string>
     <string name="NewHandlerActivity">NewHandlerActivity</string>
     <string name="TestContentActivity">TestContentActivity</string>
+    <string name="creare_database">创建数据库成功</string>
+    <string name="add_data">添加数据成功</string>
+    <string name="update_database">更新数据成功</string>
+    <string name="delete_database">删除数据成功</string>
+    <string name="query_database">查询数据成功</string>
 </resources>

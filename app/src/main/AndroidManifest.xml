@@ -14,20 +14,20 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".TestContentActivity"
-            android:label="@string/TestContentActivity">
+            android:label="@string/TestContentActivity" />
+        <activity
+            android:name=".LitePalActivity"
+            android:label="@string/LitePalActivity" />
+        <activity
+            android:name=".IntentServiceActivity"
+            android:label="@string/intentservice_activity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".LitePalActivity"
-            android:label="@string/LitePalActivity" />
-        <activity
-            android:name=".IntentServiceActivity"
-            android:label="@string/intentservice_activity" />
         <activity
             android:name=".HandlerActivity"
             android:label="@string/handler_activity" />
@@ -38,6 +38,7 @@
             android:name=".AsyncTaskActivity"
             android:label="@string/asyn_task" />
 
+        <service android:name=".MyIntentService" />
         <provider
             android:name=".TestContentProder"
             android:authorities="cn.edu.scujcc.workthreeweek"

@@ -1,13 +1,12 @@
 package cn.edu.scujcc.workthreeweek;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,7 +20,6 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
     private Button btnInsert;
     private Button btnQuery;
     private Button btnUpdate;
-    private ContentResolver resolver;
     private Uri uri;
 
     @Override
@@ -47,8 +45,9 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
             case R.id.delete_content_database:
                 uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book" + newId);
                 getContentResolver().delete(uri, null, null);
-                //textview.setText("已删除数据");
-                Log.d(TAG, "已删除数据");
+                Toast.makeText(TestContentActivity.this,
+                        getResources().getString(R.string.delete_database),
+                        Toast.LENGTH_SHORT).show();
                 break;
             case R.id.add_content_data:
                 uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book");
@@ -59,8 +58,9 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
                 values.put("pages", "123456");
                 Uri newUri = getContentResolver().insert(uri, values);
                 newId = newUri.getPathSegments().get(1);
-                Log.d(TAG, "已添加数据");
-                //textview.setText("已添加数据");
+                Toast.makeText(TestContentActivity.this,
+                        getResources().getString(R.string.add_data),
+                        Toast.LENGTH_SHORT).show();
                 break;
             case R.id.qurey_content_data:
                 uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book");
@@ -71,8 +71,9 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
                         String name = cursor.getString(cursor.getColumnIndex("name"));
                         int pages = cursor.getInt(cursor.getColumnIndex("pages"));
                         double price = cursor.getDouble(cursor.getColumnIndex("price"));
-                        Log.d(TAG, "查询结果为" + author + name + pages + price);
-                        //textview.setText(author + name + pages + price);
+                        Toast.makeText(TestContentActivity.this,
+                                author + name + pages + price,
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
                 cursor.close();
@@ -83,8 +84,9 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
                 contentValues.put("name", "红楼梦");
                 contentValues.put("author", "曹雪芹");
                 getContentResolver().update(uri, contentValues, null, null);
-                // textview.setText("已修改数据");
-                Log.d(TAG, "已修改数据");
+                Toast.makeText(TestContentActivity.this,
+                        getResources().getString(R.string.update_database),
+                        Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
