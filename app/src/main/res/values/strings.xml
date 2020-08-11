@@ -9,7 +9,8 @@
     <string name="LitePalActivity">LitePalActivity</string>
     <string name="ConstactsActivity">ConstactsActivity</string>
     <string name="NewHandlerActivity">NewHandlerActivity</string>
-    <string name="TestContentActivity">TestContentActivity</string>
+    <string name="DataContentActivity">DataContentActivity</string>
+    <string name="DatasContentActivity">DatasContentActivity</string>
     <string name="creare_database">创建数据库成功</string>
     <string name="add_data">添加数据成功</string>
     <string name="update_database">更新数据成功</string>

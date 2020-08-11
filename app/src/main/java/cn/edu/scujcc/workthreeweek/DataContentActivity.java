@@ -25,7 +25,7 @@ public class DataContentActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dataontent);
+        setContentView(R.layout.activity_data_content);
 
 
         btnInsert = (Button) findViewById(R.id.add_content_data);
