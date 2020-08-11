@@ -1,6 +1,8 @@
 # Work-Three-Week
 ## LitePal
 
+此项目为LitePalActivity
+
 配置build.gradle：资源库去找,目前版本为3.1.1
 
 配置litepal.xml：
@@ -65,9 +67,13 @@ Android中主线程也叫UI线程。Android3.0以后，系统要求网络访问�
 
 ### 1、Handle
 
+此项目为HandlerActivity
+
 基本的线程，可以做一些简单的操作，经常配合Handler使用。
 
 ### 2、AsyncTask
+
+此项目为AsyncTaskActivity
 
 轻量级的异步操作类，AsyncTask 封装了Thread和Handler, ，方便更新UI。但是AsyncTask并不适合进行特别耗时的后台任务,对于特别耗时的后台任务来说建议使用线程池。
 
@@ -86,6 +92,8 @@ AsyncTask是一个抽象类，所以如果我们想使用它，就必须要创�
 当任务执行完毕后，如果需要对结果进行返回，则使用这里指定的泛型作为返回值类型。
 
 ### 3、Intentservice
+
+此项目为：IntentServiceActivity，MyIntentService
 
 封装了HandlerThread和一个Handler，是HandlerThread的具体使用，由于属于Service，若以比单纯的线程优先级更高。
 
@@ -157,6 +165,10 @@ ContentResolver resolver = getContentResolver();
 ```
 
 - ### 与其他的ContentProvider通信
+
+- ### 进程内通信
+
+  此项目中为：DBHelper数据库类，DataContentProvider内容提供器，DataContentActivity进程
 
 要实现与其他的ContentProvider通信首先要查找到对应的ContentProvider进行匹配。android中ContenProvider借助ContentResolver通过Uri与其他的ContentProvider进行匹配通信。
 

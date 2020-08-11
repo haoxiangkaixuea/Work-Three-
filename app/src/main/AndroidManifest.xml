@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SQLiteActivity"></activity>
         <activity
             android:name=".DataContentActivity"
             android:label="@string/TestContentActivity" />
@@ -21,7 +22,6 @@
         <activity
             android:name=".IntentServiceActivity"
             android:label="@string/intentservice_activity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,6 +39,7 @@
             android:label="@string/asyn_task" />
 
         <service android:name=".MyIntentService" />
+
         <provider
             android:name=".DataContentProvider"
             android:authorities="cn.edu.scujcc.workthreeweek"
