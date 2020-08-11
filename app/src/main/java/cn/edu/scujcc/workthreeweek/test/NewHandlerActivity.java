@@ -32,6 +32,15 @@ public class NewHandlerActivity extends AppCompatActivity {
     int data = 0;
     private Button btnStart;
     private ProgressBar pb;
+    //消息异步机制
+    public Handler updateBarHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            pb.setProgress(msg.arg1);
+            updateBarHandler.post(updateThread);
+        }
+    };
+    private TextView tvState;
     public Runnable updateThread = new Runnable() {
         int i = 0;
 
@@ -54,15 +63,6 @@ public class NewHandlerActivity extends AppCompatActivity {
             }
         }
     };
-    private TextView tvState;
-    //消息异步机制
-    public Handler updateBarHandler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            pb.setProgress(msg.arg1);
-            updateBarHandler.post(updateThread);
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +72,10 @@ public class NewHandlerActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
         tvState = findViewById(R.id.tv_state);
-        btnStart.setOnClickListener(new ButtonListener());
-    }
-
-    class ButtonListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
+        btnStart.setOnClickListener(v -> {
             pb.setVisibility(View.VISIBLE);
             updateBarHandler.post(updateThread);
             tvState.setText(getResources().getString(R.string.progress_star));
-        }
+        });
     }
 }
