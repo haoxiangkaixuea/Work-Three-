@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".test.MainActivity3">
+        <activity android:name=".test.TestContentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".test.MainActivity" />
         <activity
             android:name=".LitePalActivity"
             android:label="@string/LitePalActivity" />
@@ -38,11 +37,7 @@
             android:label="@string/asyn_task" />
 
         <provider
-            android:name=".test.ContentPro_der"
-            android:authorities="cn.edu.scujcc.workthreeweek.test.contentprovider"
-            android:exported="true" />
-        <provider
-            android:name=".test.MyContentProvider"
+            android:name=".test.TestContentProder"
             android:authorities="cn.edu.scujcc.workthreeweek"
             android:enabled="true"
             android:exported="true" />

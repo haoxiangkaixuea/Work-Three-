@@ -3,7 +3,6 @@ package cn.edu.scujcc.workthreeweek.data.local;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -11,7 +10,9 @@ import androidx.annotation.Nullable;
  * @author Administrator
  */
 public class MyDBHelper extends SQLiteOpenHelper {
-
+    // 表名
+    public static final String BOOK_TABLE_NAME = "book";
+    public static final String CATEGORY_TABLE_NAME = "category";
     /**
      * 把数据库创建定义为一个字符串常量
      * 创建图书数据库
@@ -22,7 +23,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
             + "price real,"
             + "pages integer,"
             + "name text)";
-
     /**
      * 创建图书类别数据库
      * CREATE_CATEGORY 图书类别数据库
@@ -31,12 +31,16 @@ public class MyDBHelper extends SQLiteOpenHelper {
             + "id integer primary key autoincrement,"
             + "categroy_name text,"
             + "categroy_code integer)";
-
+    //数据库版本号
+    // 数据库名
+    private static final String DATABASE_NAME = "demo.db";
+    private static final int DATABASE_VERSION = 1;
     private Context mContext;
 
     public MyDBHelper(Context context) {
-        super(context, "my.db", null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
     public MyDBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -46,7 +50,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_BOOK);
         sqLiteDatabase.execSQL(CREATE_CATEGORY);
-        Toast.makeText(mContext, "Create SQLite Book", Toast.LENGTH_SHORT).show();
     }
 
     //更新数据库

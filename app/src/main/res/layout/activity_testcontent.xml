@@ -5,25 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_back"
-    tools:context=".test.ContentActivity">
+    tools:context=".test.TestContentActivity">
 
     <Button
-        android:id="@+id/creare_database"
+        android:id="@+id/add_content_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="creare_database"
+        android:text="添加数据"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/add_data"
+        android:id="@+id/qurey_content_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -31,14 +31,14 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="add_data"
+        android:text="查询数据"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/creare_database"
-        app:layout_constraintTop_toBottomOf="@+id/creare_database" />
+        app:layout_constraintStart_toStartOf="@+id/add_content_data"
+        app:layout_constraintTop_toBottomOf="@+id/add_content_data" />
 
     <Button
-        android:id="@+id/qurey_data"
+        android:id="@+id/update_content_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -46,14 +46,14 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="qurey_data"
+        android:text="更新数据"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/add_data"
-        app:layout_constraintTop_toBottomOf="@+id/add_data" />
+        app:layout_constraintStart_toStartOf="@+id/qurey_content_data"
+        app:layout_constraintTop_toBottomOf="@+id/qurey_content_data" />
 
     <Button
-        android:id="@+id/updatel_database"
+        android:id="@+id/delete_content_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,25 +61,9 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="update_database"
+        android:text="删除数据"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/qurey_data"
-        app:layout_constraintTop_toBottomOf="@+id/qurey_data" />
-
-    <Button
-        android:id="@+id/detele_database"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/button_img"
-        android:focusable="true"
-        android:text="detele_database"
-        android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/updatel_database"
-        app:layout_constraintTop_toBottomOf="@+id/updatel_database" />
-
+        app:layout_constraintStart_toStartOf="@+id/update_content_database"
+        app:layout_constraintTop_toBottomOf="@+id/update_content_database" />
 </androidx.constraintlayout.widget.ConstraintLayout>
