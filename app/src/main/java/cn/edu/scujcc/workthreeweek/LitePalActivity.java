@@ -18,14 +18,14 @@ public class LitePalActivity extends AppCompatActivity {
     private Button btnAddDatabase;
     private Button btnUpdateDatabase;
     private Button btnQueryDatabase;
-    private Button btnDeteleDatabase;
+    private Button btnDeleteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lite_pal);
 
-        btnCreateDatabase = findViewById(R.id.creare_litepal_database);
+        btnCreateDatabase = findViewById(R.id.create_litepal_database);
         btnCreateDatabase.setOnClickListener(v -> {
             LitePal.getDatabase();
             Toast.makeText(LitePalActivity.this,
@@ -51,8 +51,8 @@ public class LitePalActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnDeteleDatabase = findViewById(R.id.detele_litepal_database);
-        btnDeteleDatabase.setOnClickListener(v -> {
+        btnDeleteDatabase = findViewById(R.id.delete_litepal_database);
+        btnDeleteDatabase.setOnClickListener(v -> {
             LitePalUtils litePalUtils = new LitePalUtils();
             litePalUtils.deteleData();
             Toast.makeText(LitePalActivity.this,

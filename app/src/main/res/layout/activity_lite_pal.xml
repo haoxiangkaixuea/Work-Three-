@@ -8,7 +8,7 @@
     tools:context=".LitePalActivity">
 
     <Button
-        android:id="@+id/creare_litepal_database"
+        android:id="@+id/create_litepal_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -16,7 +16,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="creare_database"
+        android:text="create_database"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +34,8 @@
         android:text="add_data"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/creare_litepal_database"
-        app:layout_constraintTop_toBottomOf="@+id/creare_litepal_database" />
+        app:layout_constraintStart_toStartOf="@+id/create_litepal_database"
+        app:layout_constraintTop_toBottomOf="@+id/create_litepal_database" />
 
     <Button
         android:id="@+id/qurey_litepal_data"
@@ -49,8 +49,8 @@
         android:text="qurey_data"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/detele_litepal_database"
-        app:layout_constraintTop_toBottomOf="@+id/detele_litepal_database" />
+        app:layout_constraintStart_toStartOf="@+id/delete_litepal_database"
+        app:layout_constraintTop_toBottomOf="@+id/delete_litepal_database" />
 
     <Button
         android:id="@+id/update_litepal_database"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_litepal_data" />
 
     <Button
-        android:id="@+id/detele_litepal_database"
+        android:id="@+id/delete_litepal_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -76,20 +76,10 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="detele_database"
+        android:text="delete_database"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/update_litepal_database"
         app:layout_constraintTop_toBottomOf="@+id/update_litepal_database" />
-
-    <TextView
-        android:id="@+id/set_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qurey_litepal_data" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,10 +9,6 @@ import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
 public class DataUtils {
     private DBHelper mydbHelper;
 
-    public DataUtils(DBHelper mydbHelper) {
-        this.mydbHelper = mydbHelper;
-    }
-
     public void addData() {
         SQLiteDatabase database = mydbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
