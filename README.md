@@ -67,7 +67,7 @@ Android中主线程也叫UI线程。Android3.0以后，系统要求网络访问�
 
 基本的线程，可以做一些简单的操作，经常配合Handler使用。
 
-### 2、.AsyncTask
+### 2、AsyncTask
 
 轻量级的异步操作类，AsyncTask 封装了Thread和Handler, ，方便更新UI。但是AsyncTask并不适合进行特别耗时的后台任务,对于特别耗时的后台任务来说建议使用线程池。
 
@@ -121,8 +121,6 @@ AsyncTask是一个抽象类，所以如果我们想使用它，就必须要创�
 
 ContentProvider是Android4大组件之一，我们平时使用的机会可能比较少。其底层通过Binder进行数据共享。如果我们要对第三方应用提供数据，可以考虑使用ContentProvider实现
 
-
-
 - ### 增删查改
 
   ##### 例如：查
@@ -133,27 +131,22 @@ ContentProvider是Android4大组件之一，我们平时使用的机会可能比
 
   3. 通过ContentResolver 进行uri匹配
 
-     ContentResolver resolver = getContentResolver(); 
-
-     Cursor cursor = resolver.query(Uri.parse(""),null,null,null,null); 
-
+     ```java
+ContentResolver resolver = getContentResolver();
+     Cursor cursor = resolver.query(Uri.parse(""),null,null,null,null);
      if(cursor != null){
-
-     ​    while (cursor.moveToNext()){    
-
-     ​    Log.d("tag","query result "+cursor.getColumnNames());  
-
-       }    
-
-     cursor.close(); 
-
-     }
-
-     ```dart
-     // 外部进程向 ContentProvider 中添加数据
-     public Uri insert(Uri uri, ContentValues values)　 
+         while (cursor.moveToNext()){
+    Log.d("tag","query result "+cursor.getColumnNames());
+            }
+     cursor.close();
+         }
+     ```
+```java
      
-     // 外部进程 删除 ContentProvider 中的数据
+     // 外部进程向 ContentProvider 中添加数据
+    public Uri insert(Uri uri, ContentValues values)　 
+     
+    // 外部进程 删除 ContentProvider 中的数据
      public int delete(Uri uri, String selection, String[] selectionArgs)
      
      // 外部进程更新 ContentProvider 中的数据
@@ -161,7 +154,7 @@ ContentProvider是Android4大组件之一，我们平时使用的机会可能比
      
      // 外部应用 获取 ContentProvider 中的数据
      public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
-     ```
+```
 
 - ### 与其他的ContentProvider通信
 
@@ -205,8 +198,6 @@ ContentProvider是Android4大组件之一，我们平时使用的机会可能比
 - `ContentProvider` 屏蔽了数据存储的细节 , 内部实现对用户完全透明 , 用户只需要关心操作数据的 `uri` 就可以了, `ContentProvider` 可以实现不同 `app`之间 共享。
 - `Sql` 也有增删改查的方法, 但是 `sql` 只能查询本应用下的数据库。
 - 而 `ContentProvider` 还可以去增删改查本地文件. `xml` 文件的读取等。
-
-
 
 
 ##### `android:exported` 属性，和`android:multiprocess`属性

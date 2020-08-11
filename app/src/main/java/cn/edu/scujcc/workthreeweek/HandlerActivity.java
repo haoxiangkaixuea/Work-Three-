@@ -11,6 +11,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author Administrator
  */
@@ -18,8 +24,19 @@ public class HandlerActivity extends AppCompatActivity {
     public static final int PROGRRESBAR_STAR = 1;
     public static final int PROGRRESBAR_END = -1;
     public static final int PROGRRESBAR_MAX = 100;
+    //核心线程数
+    private static final int CORE_POOL_SIZE = 1;
+    //最大线程数
+    private static final int MAXIMUM_POOL_SIZE = 3;
+    //非核心线程闲时存活期
+    private static final long KEEP_ALIVE = 10;
     public boolean isRunning = true;
     int data = 0;
+    private BlockingQueue<Runnable> sPoolWorkQueue;
+    private RejectedExecutionHandler sThreadFactory;
+    // 1.创建线程池,通过配置核心参数，从而实现自定义线程池
+    Executor threadPool = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE,
+            TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);
     private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
@@ -43,10 +60,12 @@ public class HandlerActivity extends AppCompatActivity {
             }
         }
     };
+    // 2.向线程池提交任务：execute()，传入Runnable对象
+    threadPool.execute(new
 
-    Runnable runnable = new Runnable() {
+    Runnable() {
         @Override
-        public void run() {
+        public void run () {
             int status = 0;
             Message message = new Message();
             if (status < PROGRRESBAR_MAX) {
@@ -58,7 +77,9 @@ public class HandlerActivity extends AppCompatActivity {
                 handler.sendMessage(message);
             }
         }
-    };
+    })
+    // 3. 关闭线程池shutdown()
+            threadPool.shutdown()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

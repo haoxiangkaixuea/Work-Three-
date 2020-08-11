@@ -4,12 +4,12 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import cn.edu.scujcc.workthreeweek.data.local.MyDBHelper;
+import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
 
 public class DataUtils {
-    private MyDBHelper mydbHelper;
+    private DBHelper mydbHelper;
 
-    public DataUtils(MyDBHelper mydbHelper) {
+    public DataUtils(DBHelper mydbHelper) {
         this.mydbHelper = mydbHelper;
     }
 

@@ -8,21 +8,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-import cn.edu.scujcc.workthreeweek.data.local.MyDBHelper;
+import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
 
 /**
- * <pre>
- *     author : Administrator
- *     e-mail : xxx@xx
- *     time   : 2020/08/09
- *     desc   :
- *     version: 1.0
- * </pre>
- *
  * @author Administrator
  */
 
-public class TestContentProder extends ContentProvider {
+public class DataContentProvider extends ContentProvider {
     public static final String AUTOHORITY = "cn.edu.scujcc.workthreeweek";
     public static final int BOOK_CODE = 0;
     public static final int CATEGORY_CODE = 1;
@@ -31,12 +23,7 @@ public class TestContentProder extends ContentProvider {
     /**
      * URI_MATCHER:在ContentProvider 中注册URI
      */
-
     private static final UriMatcher URI_MATCHER;
-
-    /**
-     *   设置ContentProvider的唯一标识
-     */
 
     static {
         URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
@@ -49,14 +36,14 @@ public class TestContentProder extends ContentProvider {
         // 若URI资源路径 = content://cn.scu.myprovider/job ，则返回注册码Job_Code
     }
 
-    private MyDBHelper dbHelper;
+    private DBHelper dbHelper;
     private SQLiteDatabase db;
     private Context mContext;
 
     @Override
     public boolean onCreate() {
         mContext = getContext();
-        dbHelper = new MyDBHelper(getContext());
+        dbHelper = new DBHelper(getContext());
         return true;
     }
 
@@ -195,5 +182,7 @@ public class TestContentProder extends ContentProvider {
         }
         return updateRows;
     }
+
+
 }
 

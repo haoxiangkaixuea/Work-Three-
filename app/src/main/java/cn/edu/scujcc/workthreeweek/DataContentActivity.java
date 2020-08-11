@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * @author Administrator
  */
-public class TestContentActivity extends AppCompatActivity implements View.OnClickListener {
+public class DataContentActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "TestContentActivity";
     private String newId;
     private Button btnDelete;
@@ -25,7 +25,7 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_testcontent);
+        setContentView(R.layout.activity_dataontent);
 
 
         btnInsert = (Button) findViewById(R.id.add_content_data);
@@ -45,7 +45,7 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
             case R.id.delete_content_database:
                 uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book" + newId);
                 getContentResolver().delete(uri, null, null);
-                Toast.makeText(TestContentActivity.this,
+                Toast.makeText(DataContentActivity.this,
                         getResources().getString(R.string.delete_database),
                         Toast.LENGTH_SHORT).show();
                 break;
@@ -58,7 +58,7 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
                 values.put("pages", "123456");
                 Uri newUri = getContentResolver().insert(uri, values);
                 newId = newUri.getPathSegments().get(1);
-                Toast.makeText(TestContentActivity.this,
+                Toast.makeText(DataContentActivity.this,
                         getResources().getString(R.string.add_data),
                         Toast.LENGTH_SHORT).show();
                 break;
@@ -71,7 +71,7 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
                         String name = cursor.getString(cursor.getColumnIndex("name"));
                         int pages = cursor.getInt(cursor.getColumnIndex("pages"));
                         double price = cursor.getDouble(cursor.getColumnIndex("price"));
-                        Toast.makeText(TestContentActivity.this,
+                        Toast.makeText(DataContentActivity.this,
                                 author + name + pages + price,
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -84,7 +84,7 @@ public class TestContentActivity extends AppCompatActivity implements View.OnCli
                 contentValues.put("name", "红楼梦");
                 contentValues.put("author", "曹雪芹");
                 getContentResolver().update(uri, contentValues, null, null);
-                Toast.makeText(TestContentActivity.this,
+                Toast.makeText(DataContentActivity.this,
                         getResources().getString(R.string.update_database),
                         Toast.LENGTH_SHORT).show();
                 break;

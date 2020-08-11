@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 /**
  * @author Administrator
  */
-public class MyDBHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper {
     // 表名
     public static final String BOOK_TABLE_NAME = "book";
     public static final String CATEGORY_TABLE_NAME = "category";
@@ -37,12 +37,12 @@ public class MyDBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private Context mContext;
 
-    public MyDBHelper(Context context) {
+    public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
 
-    public MyDBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
