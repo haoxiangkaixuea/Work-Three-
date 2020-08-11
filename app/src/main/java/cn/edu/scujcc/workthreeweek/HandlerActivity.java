@@ -61,25 +61,25 @@ public class HandlerActivity extends AppCompatActivity {
         }
     };
     // 2.向线程池提交任务：execute()，传入Runnable对象
-//    threadPool.execute(new
-//
-//    Runnable() {
-//        @Override
-//        public void run () {
-//            int status = 0;
-//            Message message = new Message();
-//            if (status < PROGRRESBAR_MAX) {
-//                status = startProgressBar();
-//                message.what = PROGRRESBAR_STAR;
-//                handler.sendMessage(message);
-//            } else if (status == PROGRRESBAR_MAX) {
-//                message.what = PROGRRESBAR_END;
-//                handler.sendMessage(message);
-//            }
-//        }
-//    });
-//    // 3. 关闭线程池shutdown()
-//            threadPool.shutdown();
+    threadPool.execute(new
+
+    Runnable() {
+        @Override
+        public void run () {
+            int status = 0;
+            Message message = new Message();
+            if (status < PROGRRESBAR_MAX) {
+                status = startProgressBar();
+                message.what = PROGRRESBAR_STAR;
+                handler.sendMessage(message);
+            } else if (status == PROGRRESBAR_MAX) {
+                message.what = PROGRRESBAR_END;
+                handler.sendMessage(message);
+            }
+        }
+    })
+    // 3. 关闭线程池shutdown()
+            threadPool.shutdown()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

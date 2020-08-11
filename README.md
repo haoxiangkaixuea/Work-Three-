@@ -71,6 +71,60 @@ Android中主线程也叫UI线程。Android3.0以后，系统要求网络访问�
 
 基本的线程，可以做一些简单的操作，经常配合Handler使用。
 
+ **1. Message**
+
+   消息，理解为线程间通讯的数据单元。例如后台线程在处理数据完毕后需要更新UI，则可发送一条包含更新信息的Message给UI线程。
+
+  **2. Message Queue**
+
+   消息队列，用来存放通过Handler发布的消息，按照先进先出执行。
+
+  **3. Handler**
+
+   Handler是Message的主要处理者，负责将Message添加到消息队列以及对消息队列中的Message进行处理。
+
+ **4. Looper**
+
+   循环器，扮演Message Queue和Handler之间桥梁的角色，循环取出Message Queue里面的Message，并交付给相应的Handler进行处理。
+
+  **5. 线程**
+
+   UI thread 通常就是main thread，而Android启动程序时会替它建立一个Message Queue。
+
+```java 
+final Handler handler = new Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+        switch(msg.what){
+            case 1:
+                text.setText("开启线程");
+        }
+    }
+};
+```
+
+
+```java
+private void doWork(final String url, final int id) {
+    Thread thread = new Thread() {
+        @Override
+        public void run() {
+            try {
+                 Thread.sleep(100);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Message message = handler.obtainMessage();
+            message.what = 1;
+            handler.sendMessage(message);
+        }
+    };
+    thread.start();
+}
+```
+handler用sendMessage把支线程的请求消息发送给主线程，主线程接收后，用Loop.lopper把消息传回给支线程。
+
 ### 2、AsyncTask
 
 此项目为AsyncTaskActivity
@@ -165,6 +219,10 @@ ContentResolver resolver = getContentResolver();
 ```
 
 - ### 与其他的ContentProvider通信
+
+  
+
+  ![image-20200811172116972](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200811172116972.png)
 
 - ### 进程内通信
 

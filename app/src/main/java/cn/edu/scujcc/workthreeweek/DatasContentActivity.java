@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Administrator
+ */
 public class DatasContentActivity extends AppCompatActivity {
     private Button btnDatasInsert;
     private Button btnDatasQuery;
