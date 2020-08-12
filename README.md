@@ -157,7 +157,7 @@ AsyncTask是一个抽象类，所以如果我们想使用它，就必须要创�
 
 3. 由于它是一个服务因此有着比普通Thread更高的优先级,不容易被系统杀死.因此他适合执行一些优先级较高的后台任务
 
-### 线程池
+## 线程池
 
 使用线程池的好处：
 
@@ -167,7 +167,9 @@ AsyncTask是一个抽象类，所以如果我们想使用它，就必须要创�
 
 ##### 几种常见的线程池
 
-###### 1、ThreadPoolExecutor 创建基本线程池
+###### 1、ThreadPoolExecutor 
+
+创建基本线程池
 
 创建线程池，主要是利用ThreadPoolExecutor这个类，而这个类有几种构造方法，其中参数最多的一种构造方法:
 
@@ -196,7 +198,9 @@ threadFactory:线程工厂，可用于设置线程名字等等。
 
 **适用：执行很多短期异步的小程序或者负载较轻的服务器**
 
-###### 2、FixedThreadPool (可重用固定线程数)
+###### 2、FixedThreadPool 
+
+(可重用固定线程数)
 
 ```java
 final ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
@@ -206,7 +210,9 @@ final ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
 
 **适用：执行长期的任务，性能好很多**
 
-###### 3、CachedThreadPool (按需创建)
+###### 3、CachedThreadPool 
+
+(按需创建)
 
 ```java
 final ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
@@ -216,7 +222,9 @@ final ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
 **适用：周期性执行任务的场景**
 
-###### 4、SingleThreadPool(单个核线的fixed)
+###### 4、SingleThreadPool
+
+(单个核线的fixed)
 
 ```java
 final ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
@@ -224,13 +232,17 @@ final ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor()
 
 **适用：一个任务一个任务执行的场景**
 
-###### 5、ScheduledThreadPool(定时延时执行)
+###### 5、ScheduledThreadPool
+
+(定时延时执行)
 
 ```java
 final ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(3);
 ```
 
-###### 6、自定义的PriorityThreadPool(队列中有优先级比较的线程池)
+###### 6、自定义的PriorityThreadPool
+
+(队列中有优先级比较的线程池)
 
 ```java
 final ExecutorService priorityThreadPool = new ThreadPoolExecutor(3,3,0, TimeUnit.SECONDS,new PriorityBlockingQueue<Runnable>());
@@ -254,9 +266,9 @@ final ExecutorService priorityThreadPool = new ThreadPoolExecutor(3,3,0, TimeUni
 7.terminated() -线程池关闭后执行的方法
 ```
 
-|一、线程池： | |
-| ---------------------- | ---------------------- |
-|提供了一个线程队列，队列中保存着所有等待状态的线程。避免了创建与销毁额外开销，提高了响应的速度。| |
+一、线程池： 
+
+提供了一个线程队列，队列中保存着所有等待状态的线程。避免了创建与销毁额外开销，提高了响应的速度。
 
 | 二、线程池的体系结构： |                                                              |
 | ---------------------- | ------------------------------------------------------------ |
@@ -273,19 +285,19 @@ final ExecutorService priorityThreadPool = new ThreadPoolExecutor(3,3,0, TimeUni
 |                        | ExecutorService newSingleThreadExecutor() : 创建单个线程池。线程池中只有一个线程 |
 |                        | ScheduledExecutorService newScheduledThreadPool() : 创建固定大小的线程，可以延迟或定时的执行任务。 |
 
-## contentProvider
+## ContentProvider
 
 ContentProvider是Android4大组件之一，我们平时使用的机会可能比较少。其底层通过Binder进行数据共享。如果我们要对第三方应用提供数据，可以考虑使用ContentProvider实现
 
-- ### 增删查改
+### 增删查改
 
-  ##### 例如：查
+例如：查
 
-  1. 通过Context获取ContentResolver
+1. 通过Context获取ContentResolver
 
-  2. 调用它的query方法
+2. 调用它的query方法
 
-  3. 通过ContentResolver 进行uri匹配
+3. 通过ContentResolver 进行uri匹配
 
 ```java
 public Cursor query(Uri uri, String[] projection, String selection,
@@ -317,11 +329,11 @@ public Cursor query(Uri uri, String[] projection, String selection,
      public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
 ```
 
-- ### 与其他的ContentProvider通信
+### ContentProvider通信
 
-- ### 进程内通信
 
-  此项目中为：DBHelper数据库类，DataContentProvider内容提供器，DataContentActivity进程
+
+此项目中为：DBHelper数据库类，DataContentProvider内容提供器，DataContentActivity进程
 
 要实现与其他的ContentProvider通信首先要查找到对应的ContentProvider进行匹配。android中ContenProvider借助ContentResolver通过Uri与其他的ContentProvider进行匹配通信。
 
@@ -335,42 +347,44 @@ public Cursor query(Uri uri, String[] projection, String selection,
 
   4. 进程内访问 `ContentProvider`的数据
 
-     
 
-##### 实现自己的ContentProvider
+- ##### 实现自己的ContentProvider
 
 继承ContentProvider,实现对应的方法。在manifest中声明。
 
 实现自的ContentProvider需要继承Android系统的ContentProvider然后实现下面的几个方法。
 
-- onCreate()
-- query()
-- getType()
-- insert()
-- delete()
-- update()
+1. onCreate()
+2. query()
+3. getType()
+4. insert()
+5. delete()
+6. update()
 
 需要注意的是除了onCreate()其他的方法都运行在binder线程池。
 
-然后在Manifest中声明对应的contentProvider即可。
+然后在Manifest中声明对应的ContentProvider即可。
 
-##### ContentResolver如何返回Cursor对象
+- ##### ContentResolver如何返回Cursor对象
+
 
 在跨进程的情况下返回的是CursorToBulkCursorAdaptor对象，其实质是借助Binder的跨进程传输能力，在ContentProvider进程中序列化，在调用程序中反序列化。
 
-##### 为什么要用 ContentProvider ?它和 sql 的实现上有什么差别?
-
-- `ContentProvider` 屏蔽了数据存储的细节 , 内部实现对用户完全透明 , 用户只需要关心操作数据的 `uri` 就可以了, `ContentProvider` 可以实现不同 `app`之间 共享。
-- `Sql` 也有增删改查的方法, 但是 `sql` 只能查询本应用下的数据库。
-- 而 `ContentProvider` 还可以去增删改查本地文件. `xml` 文件的读取等。
+- ##### 为什么要用 ContentProvider ?它和 sql 的实现上有什么差别?
 
 
-##### `android:exported` 属性，和`android:multiprocess`属性
+1. `ContentProvider` 屏蔽了数据存储的细节 , 内部实现对用户完全透明 , 用户只需要关心操作数据的 `uri` 就可以了, `ContentProvider` 可以实现不同 `app`之间 共享。
+2. `Sql` 也有增删改查的方法, 但是 `sql` 只能查询本应用下的数据库。
+3. 而 `ContentProvider` 还可以去增删改查本地文件. `xml` 文件的读取等。
 
-- `android:exported` 属性非常重要。这个属性用于指示该服务是否能够被其他应用程序组件调用或跟它交互。
-- 如果设置为 `true`，则能够被调用或交互，否则不能。
-- 设置为 `false` 时，只有同一个应用程序的组件或带有相同用户 `ID` 的应用程序才能启动或绑定该服务。
-- 对于需要开放的组件应设置合理的权限，如果只需要对同一个签名的其它应用开放 `ContentProvider` ，则可以设置 `signature` 级别的权限。
+- 
+  ##### `android:exported` 属性，和`android:multiprocess`属性
 
-- `ContentProvider` 可以在 `AndroidManifest.xml` 中配置一个叫做 `android:multiprocess` 的属性，默认值是 false ，表示 ContentProvider 是单例的。
-- 无论哪个客户端应用的访问都将是同一个 `ContentProvider` 对象，如果设为 `true` ，系统会为每一个访问该 `ContentProvider` 的进程创建一个实例。
+
+1. `android:exported` 属性非常重要。这个属性用于指示该服务是否能够被其他应用程序组件调用或跟它交互。
+2. 如果设置为 `true`，则能够被调用或交互，否则不能。
+3. 设置为 `false` 时，只有同一个应用程序的组件或带有相同用户 `ID` 的应用程序才能启动或绑定该服务。
+4. 对于需要开放的组件应设置合理的权限，如果只需要对同一个签名的其它应用开放 `ContentProvider` ，则可以设置 `signature` 级别的权限。
+
+5. `ContentProvider` 可以在 `AndroidManifest.xml` 中配置一个叫做 `android:multiprocess` 的属性，默认值是 false ，表示 ContentProvider 是单例的。
+6. 无论哪个客户端应用的访问都将是同一个 `ContentProvider` 对象，如果设为 `true` ，系统会为每一个访问该 `ContentProvider` 的进程创建一个实例。
