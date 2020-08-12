@@ -19,8 +19,6 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import cn.edu.scujcc.workthreeweek.HandlerActivity.SubThread;
-
 /**
  * @author Administrator
  */
@@ -42,7 +40,6 @@ public class HandlerActivity extends AppCompatActivity {
                 case PROGRRESBAR_END:
                     //tvState.setText(getResources().getString(R.string.progress_end));
                     //pb.setVisibility(View.GONE);
-                    updateBarHandler.post(SubThread);
                     pb.setProgress(msg.arg1);
                     break;
                 default:
