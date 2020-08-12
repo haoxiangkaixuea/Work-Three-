@@ -57,15 +57,15 @@
 线程，可以看作是进程的实体，CPU调度资源的基本单位。本质上是一串命令（也就是程序代码），执行线程可以理解为把命令交给操作系统去执行。
 Android中主线程也叫UI线程。Android3.0以后，系统要求网络访问必须在子线程中进行。
 
-- **主线程：**又叫UI线程，由ActivityThread管理
+- ##### **主线程：**又叫UI线程，由ActivityThread管理
 
 > 作用：运行四大组件，和用户交互以及更新UI。
 
-- **子线程**
+- ##### **子线程**
 
 > 作用：处理耗时操作，比如网络请求，复杂计算等。
 
-### 1、Handle
+### 1、Handler
 
 此项目为HandlerActivity
 
@@ -254,11 +254,12 @@ final ExecutorService priorityThreadPool = new ThreadPoolExecutor(3,3,0, TimeUni
 7.terminated() -线程池关闭后执行的方法
 ```
 
-|一、线程池： |
-| ---------------------- | :----------------------------------------------------------- |
-|提供了一个线程队列，队列中保存着所有等待状态的线程。避免了创建与销毁额外开销，提高了响应的速度。|
+|一、线程池： | |
+| ---------------------- | ---------------------- |
+|提供了一个线程队列，队列中保存着所有等待状态的线程。避免了创建与销毁额外开销，提高了响应的速度。| |
+
 | 二、线程池的体系结构： |                                                              |
-| ---------------------- | :----------------------------------------------------------- |
+| ---------------------- | ------------------------------------------------------------ |
 |                        | java.util.concurrent.Executor : 负责线程的使用与调度的根接口 |
 |                        | ExecutorService 子接口: 线程池的主要接口                     |
 |                        | ThreadPoolExecutor 线程池的实现类                            |
@@ -287,14 +288,19 @@ ContentProvider是Android4大组件之一，我们平时使用的机会可能比
   3. 通过ContentResolver 进行uri匹配
 
      ```java
-ContentResolver resolver = getContentResolver();
-     Cursor cursor = resolver.query(Uri.parse(""),null,null,null,null);
-     if(cursor != null){
-         while (cursor.moveToNext()){
-      Log.d("tag","query result "+cursor.getColumnNames());
-            }
-     cursor.close();
-         }
+public Cursor query(Uri uri, String[] projection, String selection,
+                             String[] selectionArgs, String sortOrder) {
+             db = dbHelper.getReadableDatabase();
+             Cursor cursor = null;
+             switch (URI_MATCHER.match(uri)) {
+                 case BOOK_CODE:
+                     cursor = db.query("book", projection, selection, selectionArgs, null, null, sortOrder);
+                     break;
+                 default:
+                     break;       
+             }
+          return cursor;
+     }
      ```
 ```java
      
