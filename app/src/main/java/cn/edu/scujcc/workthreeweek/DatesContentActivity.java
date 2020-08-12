@@ -51,7 +51,9 @@ public class DatesContentActivity extends AppCompatActivity {
                     Toast.makeText(DatesContentActivity.this,
                             author + name + pages + price,
                             Toast.LENGTH_SHORT).show();
-                    System.out.println("query book:" + cursor.getInt(0) + " " + cursor.getString(1));
+                    Toast.makeText(DatesContentActivity.this,
+                            "query book:" + cursor.getInt(0) + " " + cursor.getString(1),
+                            Toast.LENGTH_SHORT).show();
                 }
             }
             cursor.close();
