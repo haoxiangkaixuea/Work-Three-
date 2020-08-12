@@ -25,6 +25,10 @@ public class HandlerActivity extends AppCompatActivity {
     public static final int PROGRRESBAR_STAR = 1;
     public static final int PROGRRESBAR_END = -1;
     public int data = 0;
+    Boolean isRunning = true;
+    private Button btnStart;
+    private ProgressBar pb;
+    private TextView tvState;
     public Handler updateBarHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
@@ -42,10 +46,6 @@ public class HandlerActivity extends AppCompatActivity {
             }
         }
     };
-    Boolean isRunning = true;
-    private Button btnStart;
-    private ProgressBar pb;
-    private TextView tvState;
     private volatile int i = 0;
 
     @Override

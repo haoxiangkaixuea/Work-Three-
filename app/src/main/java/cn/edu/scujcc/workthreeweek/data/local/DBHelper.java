@@ -4,13 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 /**
  * @author Administrator
  */
 public class DBHelper extends SQLiteOpenHelper {
-    // 表名
+    /**
+     * 表名
+     */
     public static final String BOOK_TABLE_NAME = "book";
     public static final String CATEGORY_TABLE_NAME = "category";
     /**
@@ -31,20 +31,19 @@ public class DBHelper extends SQLiteOpenHelper {
             + "id integer primary key autoincrement,"
             + "categroy_name text,"
             + "categroy_code integer)";
-    //数据库版本号
-    // 数据库名
+    /**
+     * 数据库名
+     */
     private static final String DATABASE_NAME = "demo.db";
+    /**
+     * 数据库版本号
+     */
     private static final int DATABASE_VERSION = 1;
-    private Context mContext;
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-
-    public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {

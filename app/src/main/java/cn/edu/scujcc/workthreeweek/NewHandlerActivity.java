@@ -1,4 +1,4 @@
-package cn.edu.scujcc.workthreeweek.test;
+package cn.edu.scujcc.workthreeweek;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import cn.edu.scujcc.workthreeweek.R;
 
 /**
  * <pre>
@@ -33,7 +31,7 @@ public class NewHandlerActivity extends AppCompatActivity {
     private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
-    public Runnable updateThread = new Runnable() {
+    private Runnable updateThread = new Runnable() {
         int i = 0;
 
         @Override
@@ -56,7 +54,9 @@ public class NewHandlerActivity extends AppCompatActivity {
             }
         }
     };
-    //消息异步机制
+    /**
+     * 消息异步机制
+     */
     public Handler updateBarHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {

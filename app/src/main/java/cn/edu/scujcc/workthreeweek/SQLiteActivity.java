@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
 import cn.edu.scujcc.workthreeweek.util.DataUtils;
 
+/**
+ * @author Administrator
+ */
 public class SQLiteActivity extends AppCompatActivity {
     private DBHelper dbHelper;
     private Button btnCreateDatabase;

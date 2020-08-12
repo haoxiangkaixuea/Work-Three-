@@ -19,7 +19,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  * @author Administrator
  */
 public class MyIntentService extends IntentService {
-    public static final int PROGRRESBAR_MAX = 100;
     private int date = 0;
     private boolean isRunning = true;
     private int data = 0;

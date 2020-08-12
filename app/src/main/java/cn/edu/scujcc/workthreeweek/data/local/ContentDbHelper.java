@@ -16,13 +16,19 @@ import android.database.sqlite.SQLiteOpenHelper;
  * @author Administrator
  */
 public class ContentDbHelper extends SQLiteOpenHelper {
-    // 表名
+    /**
+     * 表名
+     */
     public static final String USER_TABLE_NAME = "user";
     public static final String JOB_TABLE_NAME = "job";
-    // 数据库名
+    /**
+     * 数据库名
+     */
     private static final String DATABASE_NAME = "finch.db";
+    /**
+     * 数据库版本号
+     */
     private static final int DATABASE_VERSION = 1;
-    //数据库版本号
 
     public ContentDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
