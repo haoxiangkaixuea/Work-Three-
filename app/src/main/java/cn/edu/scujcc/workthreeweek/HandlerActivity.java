@@ -22,9 +22,8 @@ import java.util.concurrent.TimeUnit;
  * @author Administrator
  */
 public class HandlerActivity extends AppCompatActivity {
-    public static final int PROGRRESBAR_STAR = 1;
-    public static final int PROGRRESBAR_END = -1;
-    public int data = 0;
+    public static final int PROGRESSBAR_STAR = 1;
+    public static final int PROGRESSBAR_END = -1;
     Boolean isRunning = true;
     private Button btnStart;
     private ProgressBar pb;
@@ -33,10 +32,10 @@ public class HandlerActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case PROGRRESBAR_STAR:
+                case PROGRESSBAR_STAR:
                     pb.setProgress(msg.arg1);
                     break;
-                case PROGRRESBAR_END:
+                case PROGRESSBAR_END:
                     tvState.setText(getResources().getString(R.string.progress_end));
                     pb.setVisibility(View.GONE);
                     pb.setProgress(msg.arg1);
@@ -46,7 +45,7 @@ public class HandlerActivity extends AppCompatActivity {
             }
         }
     };
-    private volatile int i = 0;
+    private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +84,13 @@ public class HandlerActivity extends AppCompatActivity {
         //可以避免重复创建Message对象，所以建议用updateBarHandler.obtainMessage()创建Message对象。
         msg.arg1 = i;
         while (isRunning) {
-            i++;
+            i += 1;
             try {
                 Thread.sleep(100);
-                msg.what = PROGRRESBAR_STAR;
+                msg.what = PROGRESSBAR_STAR;
                 if (i > 100) {
                     isRunning = false;
-                    msg.what = PROGRRESBAR_END;
+                    msg.what = PROGRESSBAR_END;
                     onDestroy();
                 }
             } catch (Exception e) {
@@ -101,6 +100,5 @@ public class HandlerActivity extends AppCompatActivity {
         //将msg加入到消息队列中
         updateBarHandler.sendMessage(msg);
     }
-
 }
 

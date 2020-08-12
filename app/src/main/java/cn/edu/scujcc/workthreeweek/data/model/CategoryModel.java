@@ -15,8 +15,8 @@ import org.litepal.crud.LitePalSupport;
  */
 public class CategoryModel extends LitePalSupport {
     private int id;
-    private String categroyName;
-    private String categroyCode;
+    private String categoryName;
+    private String categoryCode;
 
     public int getId() {
         return id;
@@ -26,19 +26,19 @@ public class CategoryModel extends LitePalSupport {
         this.id = id;
     }
 
-    public String getCategroyName() {
-        return categroyName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategroyName(String categroyName) {
-        this.categroyName = categroyName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public String getCategroyCode() {
-        return categroyCode;
+    public String getCategoryCode() {
+        return categoryCode;
     }
 
-    public void setCategroyCode(String categroyCode) {
-        this.categroyCode = categroyCode;
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
     }
 }

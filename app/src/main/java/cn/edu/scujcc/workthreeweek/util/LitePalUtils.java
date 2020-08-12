@@ -24,7 +24,7 @@ public class LitePalUtils {
     }
 
     public void addData() {
-        //name和duratin是你要存入的重复的数据
+        //name和duration是你要存入的重复的数据
         BookModel bookModel = new BookModel();
         List<BookModel> bookModels = LitePal.findAll(BookModel.class);
         for (int i = 0; i < bookModels.size(); i++) {
@@ -48,7 +48,7 @@ public class LitePalUtils {
         for (int i = 0; i < bookModels.size(); i++) {
             if (bookModels.get(i).getName() == "红楼梦"
                     && bookModels.get(i).getAuthor() == "曹雪芹"
-                    && bookModels.get(i).getPrice() == 233534
+                    && bookModels.get(i).getPages() == 233534
                     && bookModels.get(i).getPrice() == 35.9) {
                 bookModels.get(i).delete();
             }
@@ -64,7 +64,7 @@ public class LitePalUtils {
         bookModel.updateAll("name= ? and author =?", "红楼梦", "曹雪芹");
     }
 
-    public void deteleData() {
+    public void deleteData() {
         LitePal.deleteAll(BookModel.class, "price< ?", "40");
     }
 

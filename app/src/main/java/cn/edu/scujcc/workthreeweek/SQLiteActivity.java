@@ -45,7 +45,7 @@ public class SQLiteActivity extends AppCompatActivity {
         btnUpdateDatabase = findViewById(R.id.update_sqlite_database);
         btnUpdateDatabase.setOnClickListener(v -> {
             DataUtils dataUtils = new DataUtils();
-            dataUtils.updatetData();
+            dataUtils.updateData();
             Toast.makeText(SQLiteActivity.this,
                     getResources().getString(R.string.update_database),
                     Toast.LENGTH_SHORT).show();
@@ -54,7 +54,7 @@ public class SQLiteActivity extends AppCompatActivity {
         btnDeleteDatabase = findViewById(R.id.delete_sqlite_database);
         btnDeleteDatabase.setOnClickListener(v -> {
             DataUtils dataUtils = new DataUtils();
-            dataUtils.deteleData();
+            dataUtils.deleteData();
             Toast.makeText(SQLiteActivity.this,
                     getResources().getString(R.string.delete_database),
                     Toast.LENGTH_SHORT).show();
@@ -63,7 +63,7 @@ public class SQLiteActivity extends AppCompatActivity {
         btnQueryDatabase = findViewById(R.id.qurey_sqlite_data);
         btnQueryDatabase.setOnClickListener(v -> {
             DataUtils dataUtils = new DataUtils();
-            dataUtils.qureyData();
+            dataUtils.queryData();
             Toast.makeText(SQLiteActivity.this,
                     getResources().getString(R.string.query_database),
                     Toast.LENGTH_SHORT).show();

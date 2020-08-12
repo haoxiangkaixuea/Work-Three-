@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
  * @author Administrator
  */
 public class DataContentActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "TestContentActivity";
     private String newId;
     private Button btnDelete;
     private Button btnInsert;
@@ -26,7 +25,6 @@ public class DataContentActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_content);
-
 
         btnInsert = (Button) findViewById(R.id.add_content_data);
         btnQuery = (Button) findViewById(R.id.qurey_content_data);

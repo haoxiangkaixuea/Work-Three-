@@ -26,8 +26,8 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class NewHandlerActivity extends AppCompatActivity {
+    private static final int PROGRESSBAR_MAX = 100;
     public boolean isRunning = true;
-    int data = 0;
     private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
@@ -47,7 +47,7 @@ public class NewHandlerActivity extends AppCompatActivity {
             }
             //将msg加入到消息队列中
             updateBarHandler.sendMessage(msg);
-            if (i == 100) {
+            if (i == PROGRESSBAR_MAX) {
                 tvState.setText(getResources().getString(R.string.progress_end));
                 updateBarHandler.removeCallbacks(updateThread);
                 pb.setVisibility(View.GONE);

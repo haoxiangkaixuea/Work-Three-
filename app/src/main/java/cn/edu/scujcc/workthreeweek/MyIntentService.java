@@ -19,9 +19,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  * @author Administrator
  */
 public class MyIntentService extends IntentService {
-    private int date = 0;
-    private boolean isRunning = true;
-    private int data = 0;
     private LocalBroadcastManager mLocalBroadcastManager;
 
     public MyIntentService() {
@@ -32,8 +29,8 @@ public class MyIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        date = 0;
-        isRunning = true;
+        int date = 0;
+        boolean isRunning = true;
         while (isRunning) {
             try {
                 date += 1;

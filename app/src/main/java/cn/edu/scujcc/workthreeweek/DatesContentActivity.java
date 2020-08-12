@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * @author Administrator
  */
-public class DatasContentActivity extends AppCompatActivity {
-    private Button btnDatasInsert;
-    private Button btnDatasQuery;
+public class DatesContentActivity extends AppCompatActivity {
+    private Button btuDabsInsert;
+    private Button btuDabsQuery;
     private Uri uri;
     private String newId;
 
@@ -23,9 +23,9 @@ public class DatasContentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datas_content);
 
-        btnDatasInsert = findViewById(R.id.add_content_datas);
-        btnDatasQuery = findViewById(R.id.qurey_content_datas);
-        btnDatasInsert.setOnClickListener(v -> {
+        btuDabsInsert = findViewById(R.id.add_content_datas);
+        btuDabsQuery = findViewById(R.id.qurey_content_datas);
+        btuDabsInsert.setOnClickListener(v -> {
             uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book");
             ContentValues values = new ContentValues();
             values.put("name", "百万英镑");
@@ -34,12 +34,12 @@ public class DatasContentActivity extends AppCompatActivity {
             values.put("pages", "345245");
             Uri newUri = getContentResolver().insert(uri, values);
             newId = newUri.getPathSegments().get(1);
-            Toast.makeText(DatasContentActivity.this,
+            Toast.makeText(DatesContentActivity.this,
                     getResources().getString(R.string.add_data),
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnDatasQuery.setOnClickListener(v -> {
+        btuDabsQuery.setOnClickListener(v -> {
             uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book");
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
             if (cursor != null) {
@@ -48,7 +48,7 @@ public class DatasContentActivity extends AppCompatActivity {
                     String name = cursor.getString(cursor.getColumnIndex("name"));
                     int pages = cursor.getInt(cursor.getColumnIndex("pages"));
                     double price = cursor.getDouble(cursor.getColumnIndex("price"));
-                    Toast.makeText(DatasContentActivity.this,
+                    Toast.makeText(DatesContentActivity.this,
                             author + name + pages + price,
                             Toast.LENGTH_SHORT).show();
                     System.out.println("query book:" + cursor.getInt(0) + " " + cursor.getString(1));

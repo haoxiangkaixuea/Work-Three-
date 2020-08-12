@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @author Administrator
  */
 public class AsyncTaskActivity extends AppCompatActivity {
-    public static final int PROGRRESBAR_MAX = 100;
+    public static final int PROGRESSBAR_MAX = 100;
     private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
@@ -53,7 +53,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
         protected Boolean doInBackground(Void... params) {
             int count = 0;
             try {
-                while (count <= PROGRRESBAR_MAX) {
+                while (count <= PROGRESSBAR_MAX) {
                     count += 1;
                     Thread.sleep(100);
                     publishProgress(count);

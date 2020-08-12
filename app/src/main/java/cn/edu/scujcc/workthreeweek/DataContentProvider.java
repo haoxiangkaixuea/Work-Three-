@@ -15,11 +15,11 @@ import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
  */
 
 public class DataContentProvider extends ContentProvider {
-    public static final String AUTOHORITY = "cn.edu.scujcc.workthreeweek";
+    public static final String AUTHORITY = "cn.edu.scujcc.workthreeweek";
     public static final int BOOK_CODE = 0;
     public static final int CATEGORY_CODE = 1;
     public static final int BOOKS_CODE = 2;
-    public static final int CATEGORYS_CODE = 3;
+    public static final int CATEGORIES_CODE = 3;
     /**
      * URI_MATCHER:在ContentProvider 中注册URI
      */
@@ -27,13 +27,10 @@ public class DataContentProvider extends ContentProvider {
 
     static {
         URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
-        // 初始化
-        URI_MATCHER.addURI(AUTOHORITY, "book", BOOK_CODE);
-        URI_MATCHER.addURI(AUTOHORITY, "category", CATEGORY_CODE);
-        URI_MATCHER.addURI(AUTOHORITY, "books", BOOKS_CODE);
-        URI_MATCHER.addURI(AUTOHORITY, "categorys", CATEGORYS_CODE);
-        // 若URI资源路径 = content://cn.scu.myprovider/user ，则返回注册码User_Code
-        // 若URI资源路径 = content://cn.scu.myprovider/job ，则返回注册码Job_Code
+        URI_MATCHER.addURI(AUTHORITY, "book", BOOK_CODE);
+        URI_MATCHER.addURI(AUTHORITY, "category", CATEGORY_CODE);
+        URI_MATCHER.addURI(AUTHORITY, "books", BOOKS_CODE);
+        URI_MATCHER.addURI(AUTHORITY, "categories", CATEGORIES_CODE);
     }
 
     private DBHelper dbHelper;
@@ -49,11 +46,6 @@ public class DataContentProvider extends ContentProvider {
 
     /**
      * 删除数据
-     *
-     * @param uri
-     * @param selection
-     * @param selectionArgs
-     * @return
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
@@ -70,9 +62,9 @@ public class DataContentProvider extends ContentProvider {
             case CATEGORY_CODE:
                 deleteRows = db.delete("category", selection, selectionArgs);
                 break;
-            case CATEGORYS_CODE:
+            case CATEGORIES_CODE:
                 String categoryId = uri.getPathSegments().get(1);
-                deleteRows = db.delete("book", "id=?", new String[]{categoryId});
+                deleteRows = db.delete("category", "id=?", new String[]{categoryId});
                 break;
             default:
                 break;
@@ -87,10 +79,6 @@ public class DataContentProvider extends ContentProvider {
 
     /**
      * 插入数据
-     *
-     * @param uri
-     * @param values
-     * @return
      */
     @Override
     public Uri insert(Uri uri, ContentValues values) {
@@ -100,12 +88,12 @@ public class DataContentProvider extends ContentProvider {
             case BOOK_CODE:
             case BOOKS_CODE:
                 long newBookId = db.insert("book", null, values);
-                uriReturn = Uri.parse("cotent://" + AUTOHORITY + "/book/" + newBookId);
+                uriReturn = Uri.parse("content://" + AUTHORITY + "/book/" + newBookId);
                 break;
             case CATEGORY_CODE:
-            case CATEGORYS_CODE:
+            case CATEGORIES_CODE:
                 long newCategoryId = db.insert("book", null, values);
-                uriReturn = Uri.parse("cotent://" + AUTOHORITY + "/category/" + newCategoryId);
+                uriReturn = Uri.parse("content://" + AUTHORITY + "/category/" + newCategoryId);
                 break;
             default:
                 break;
@@ -115,13 +103,6 @@ public class DataContentProvider extends ContentProvider {
 
     /**
      * 查询数据
-     *
-     * @param uri
-     * @param projection
-     * @param selection
-     * @param selectionArgs
-     * @param sortOrder
-     * @return
      */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
@@ -139,7 +120,7 @@ public class DataContentProvider extends ContentProvider {
             case CATEGORY_CODE:
                 cursor = db.query("category", projection, selection, selectionArgs, null, null, sortOrder);
                 break;
-            case CATEGORYS_CODE:
+            case CATEGORIES_CODE:
                 String categoryId = uri.getPathSegments().get(1);
                 cursor = db.query("category", projection, "id=?", new String[]{categoryId}, null, null, sortOrder);
                 break;
@@ -151,12 +132,6 @@ public class DataContentProvider extends ContentProvider {
 
     /**
      * 更新数据
-     *
-     * @param uri
-     * @param values
-     * @param selection
-     * @param selectionArgs
-     * @return
      */
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
@@ -173,16 +148,14 @@ public class DataContentProvider extends ContentProvider {
             case CATEGORY_CODE:
                 updateRows = db.update("category", values, selection, selectionArgs);
                 break;
-            case CATEGORYS_CODE:
+            case CATEGORIES_CODE:
                 String categoryId = uri.getPathSegments().get(1);
-                updateRows = db.update("book", values, "id=?", new String[]{categoryId});
+                updateRows = db.update("category", values, "id=?", new String[]{categoryId});
                 break;
             default:
                 break;
         }
         return updateRows;
     }
-
-
 }
 

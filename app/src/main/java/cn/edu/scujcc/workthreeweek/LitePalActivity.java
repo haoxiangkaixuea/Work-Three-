@@ -54,7 +54,7 @@ public class LitePalActivity extends AppCompatActivity {
         btnDeleteDatabase = findViewById(R.id.delete_litepal_database);
         btnDeleteDatabase.setOnClickListener(v -> {
             LitePalUtils litePalUtils = new LitePalUtils();
-            litePalUtils.deteleData();
+            litePalUtils.deleteData();
             Toast.makeText(LitePalActivity.this,
                     getResources().getString(R.string.delete_database),
                     Toast.LENGTH_SHORT).show();

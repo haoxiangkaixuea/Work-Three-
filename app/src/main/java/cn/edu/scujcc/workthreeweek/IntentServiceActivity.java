@@ -18,7 +18,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  */
 public class IntentServiceActivity extends AppCompatActivity {
     public static final String ACTION = "cn.edu.scujcc.workthreeweek.IntentServiceActivity";
-    public static final int PROGRRESBAR_MAX = 100;
+    public static final int PROGRESSBAR_MAX = 100;
     private LocalBroadcastManager localBroadcastManager;
     private MyLocalBroadcastReceive myLocalBroadcastReceive;
     private Button btnStart;
@@ -61,16 +61,15 @@ public class IntentServiceActivity extends AppCompatActivity {
         localBroadcastManager.registerReceiver(myLocalBroadcastReceive, intentFilter);
     }
 
-
     public class MyLocalBroadcastReceive extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
             if (ACTION.equals(intent.getAction())) {
                 int progress = intent.getIntExtra("progress", 0);
-                if (progress > 0 && progress < PROGRRESBAR_MAX) {
+                if (progress > 0 && progress < PROGRESSBAR_MAX) {
                     tvState.setText(getResources().getString(R.string.progress_star));
-                } else if (progress >= PROGRRESBAR_MAX) {
+                } else if (progress >= PROGRESSBAR_MAX) {
                     tvState.setText(getResources().getString(R.string.progress_end));
                     pb.setVisibility(View.GONE);
                 }
