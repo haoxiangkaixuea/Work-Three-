@@ -57,7 +57,7 @@
 线程，可以看作是进程的实体，CPU调度资源的基本单位。本质上是一串命令（也就是程序代码），执行线程可以理解为把命令交给操作系统去执行。
 Android中主线程也叫UI线程。Android3.0以后，系统要求网络访问必须在子线程中进行。
 
-- ##### **主线程：**又叫UI线程，由ActivityThread管理
+- ##### **主线程**
 
 > 作用：运行四大组件，和用户交互以及更新UI。
 
@@ -287,7 +287,7 @@ ContentProvider是Android4大组件之一，我们平时使用的机会可能比
 
   3. 通过ContentResolver 进行uri匹配
 
-     ```java
+```java
 public Cursor query(Uri uri, String[] projection, String selection,
                              String[] selectionArgs, String sortOrder) {
              db = dbHelper.getReadableDatabase();
@@ -301,7 +301,7 @@ public Cursor query(Uri uri, String[] projection, String selection,
              }
           return cursor;
      }
-     ```
+```
 ```java
      
      // 外部进程向 ContentProvider 中添加数据
