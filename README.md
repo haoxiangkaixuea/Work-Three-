@@ -319,10 +319,6 @@ public Cursor query(Uri uri, String[] projection, String selection,
 
 - ### 与其他的ContentProvider通信
 
-  
-
-  ![image-20200811172116972](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200811172116972.png)
-
 - ### 进程内通信
 
   此项目中为：DBHelper数据库类，DataContentProvider内容提供器，DataContentActivity进程
