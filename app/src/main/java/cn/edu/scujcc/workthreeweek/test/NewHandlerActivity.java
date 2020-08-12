@@ -48,6 +48,7 @@ public class NewHandlerActivity extends AppCompatActivity {
         public void run() {
             i += 10;
             Message msg = updateBarHandler.obtainMessage();
+            //可以避免重复创建Message对象，所以建议用updateBarHandler.obtainMessage()创建Message对象。
             msg.arg1 = i;
             try {
                 Thread.sleep(1000);

@@ -11,11 +11,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionHandler;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import cn.edu.scujcc.workthreeweek.HandlerActivity.SubThread;
 
 /**
  * @author Administrator
@@ -23,63 +27,29 @@ import java.util.concurrent.TimeUnit;
 public class HandlerActivity extends AppCompatActivity {
     public static final int PROGRRESBAR_STAR = 1;
     public static final int PROGRRESBAR_END = -1;
-    public static final int PROGRRESBAR_MAX = 100;
-    //核心线程数
-    private static final int CORE_POOL_SIZE = 1;
-    //最大线程数
-    private static final int MAXIMUM_POOL_SIZE = 3;
-    //非核心线程闲时存活期
-    private static final long KEEP_ALIVE = 10;
-    public boolean isRunning = true;
-    int data = 0;
-    private BlockingQueue<Runnable> sPoolWorkQueue;
-    private RejectedExecutionHandler sThreadFactory;
-    // 1.创建线程池,通过配置核心参数，从而实现自定义线程池
-    Executor threadPool = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE,
-            TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);
+    public int data = 0;
     private Button btnStart;
     private ProgressBar pb;
     private TextView tvState;
-    private Handler handler = new Handler(Looper.getMainLooper()) {
+    private Handler updateBarHandler = new Handler(Looper.getMainLooper()) {
         public void handlerMessage(Message msg) {
             switch (msg.what) {
                 case PROGRRESBAR_STAR:
-                    tvState.setText(getResources().getString(R.string.progress_star));
-                    setStop(true);
-                    pb.setProgress(data);
-                    pb.setVisibility(View.VISIBLE);
+                    //tvState.setText(getResources().getString(R.string.progress_star));
+                    //pb.setVisibility(View.VISIBLE);
+                    pb.setProgress(msg.arg1);
                     break;
                 case PROGRRESBAR_END:
-                    tvState.setText(getResources().getString(R.string.progress_end));
-                    setStop(false);
-                    pb.setProgress(data);
-                    pb.setVisibility(View.GONE);
+                    //tvState.setText(getResources().getString(R.string.progress_end));
+                    //pb.setVisibility(View.GONE);
+                    updateBarHandler.post(SubThread);
+                    pb.setProgress(msg.arg1);
                     break;
                 default:
                     break;
             }
         }
     };
-    // 2.向线程池提交任务：execute()，传入Runnable对象
-    threadPool.execute(new
-
-    Runnable() {
-        @Override
-        public void run () {
-            int status = 0;
-            Message message = new Message();
-            if (status < PROGRRESBAR_MAX) {
-                status = startProgressBar();
-                message.what = PROGRRESBAR_STAR;
-                handler.sendMessage(message);
-            } else if (status == PROGRRESBAR_MAX) {
-                message.what = PROGRRESBAR_END;
-                handler.sendMessage(message);
-            }
-        }
-    })
-    // 3. 关闭线程池shutdown()
-            threadPool.shutdown()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,48 +60,91 @@ public class HandlerActivity extends AppCompatActivity {
         pb = findViewById(R.id.pb);
         tvState = findViewById(R.id.tv_state);
         btnStart.setOnClickListener(v -> {
-//            new Thread() {
-//                int status;
-//                Message message = new Message();
-//
-//                @Override
-//                public void run() {
-//                    if (status < PROGRRESBAR_MAX) {
-//                        status = startProgressBar();
-//                        message.what = PROGRRESBAR_STAR;
-//                        handler.sendMessage(message);
-//                    } else if (status == PROGRRESBAR_MAX) {
-//                        message.what = PROGRRESBAR_END;
-//                        handler.sendMessage(message);
-//                    }
-//                }
-//            }.start();
+            tvState.setText(getResources().getString(R.string.progress_star));
+            pb.setVisibility(View.VISIBLE);
+            //updateBarHandler.post(updateThread);
         });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        handler.removeCallbacksAndMessages(null);
+        updateBarHandler.removeCallbacksAndMessages(null);
     }
 
-    private int startProgressBar() {
-        int date = 0;
-        while (isRunning) {
-            try {
-                date += 1;
-                if (date >= 100) {
-                    isRunning = false;
-                }
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+//    public void doWork() {
+//        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
+//                .setNameFormat("demo-pool-%d").build();
+//        ExecutorService singleThreadPool = new ThreadPoolExecutor(1, 1,
+//                0L, TimeUnit.MILLISECONDS,
+//                new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+//
+//        singleThreadPool.execute(() -> System.out.println(Thread.currentThread().getName()));
+//        singleThreadPool.shutdown();
+//
+//        class TimerTaskThread extends Thread {
+//            int i = 0;
+//
+//            public TimerTaskThread() {
+//                i += 10;
+//                Message msg = updateBarHandler.obtainMessage();
+//                //可以避免重复创建Message对象，所以建议用updateBarHandler.obtainMessage()创建Message对象。
+//                msg.arg1 = i;
+//                msg.what = PROGRRESBAR_STAR;
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                //将msg加入到消息队列中
+//                updateBarHandler.sendMessage(msg);
+//                if (i == 100) {
+//                    msg.what = PROGRRESBAR_END;
+//                    onDestroy();
+//                }
+//            }
+//        }
+//    }
+
+    public class ExecutorsDemo {
+        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
+                .setNameFormat("demo-pool-%d").build();
+
+        ExecutorService pool = new ThreadPoolExecutor(5, 200,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+
+        void main(String[] args) {
+
+            for (int i = 0; i < Integer.MAX_VALUE; i++) {
+                pool.execute(new SubThread());
             }
         }
-        return data;
     }
 
-    public void setStop(boolean stop) {
-        this.isRunning = stop;
+    class SubThread implements Runnable {
+        int i = 0;
+
+        @Override
+        public void run() {
+            i += 10;
+            Message msg = updateBarHandler.obtainMessage();
+            //可以避免重复创建Message对象，所以建议用updateBarHandler.obtainMessage()创建Message对象。
+            msg.arg1 = i;
+            msg.what = PROGRRESBAR_STAR;
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //将msg加入到消息队列中
+            updateBarHandler.sendMessage(msg);
+            if (i == 100) {
+                msg.what = PROGRRESBAR_END;
+                tvState.setText(getResources().getString(R.string.progress_end));
+                pb.setVisibility(View.GONE);
+                onDestroy();
+            }
+        }
     }
 }

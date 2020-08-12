@@ -16,34 +16,27 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".DatasContentActivity"
-            android:label="@string/DatasContentActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+            android:label="@string/DatasContentActivity" />
         <activity android:name=".SQLiteActivity" />
         <activity
             android:name=".DataContentActivity"
-            android:label="@string/TestContentActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/DataContentActivity" />
         <activity
             android:name=".LitePalActivity"
             android:label="@string/LitePalActivity" />
         <activity
             android:name=".IntentServiceActivity"
-            android:label="@string/intentservice_activity">
-        </activity>
+            android:label="@string/intentservice_activity" />
         <activity
             android:name=".HandlerActivity"
-            android:label="@string/handler_activity" />
+            android:label="@string/handler_activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".test.NewHandlerActivity"
             android:label="@string/NewHandlerActivity" />
