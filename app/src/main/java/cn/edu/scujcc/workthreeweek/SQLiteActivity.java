@@ -29,7 +29,7 @@ public class SQLiteActivity extends AppCompatActivity {
         btnCreateDatabase.setOnClickListener(v -> {
             dbHelper.getWritableDatabase();
             Toast.makeText(SQLiteActivity.this,
-                    getResources().getString(R.string.creare_database),
+                    getResources().getString(R.string.create_database),
                     Toast.LENGTH_SHORT).show();
         });
 

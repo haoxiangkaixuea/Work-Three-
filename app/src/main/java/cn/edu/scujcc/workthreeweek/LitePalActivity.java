@@ -29,7 +29,7 @@ public class LitePalActivity extends AppCompatActivity {
         btnCreateDatabase.setOnClickListener(v -> {
             LitePal.getDatabase();
             Toast.makeText(LitePalActivity.this,
-                    getResources().getString(R.string.creare_database),
+                    getResources().getString(R.string.create_database),
                     Toast.LENGTH_SHORT).show();
         });
 
