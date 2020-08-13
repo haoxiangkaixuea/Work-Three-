@@ -33,7 +33,7 @@ public class DataContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        bookDbHelper = new BookDBHelper(getContext(), "BookDBHelper,db", null, 1);
+        bookDbHelper = new BookDBHelper(getContext(), "BookDBHelper.db", null, 1);
         return true;
     }
 
