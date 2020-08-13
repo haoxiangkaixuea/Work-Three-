@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_back"
-    tools:context=".DatesContentActivity">
+    tools:context=".DatumContentActivity">
 
     <Button
         android:id="@+id/add_content_dates"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/qurey_content_dates"
+        android:id="@+id/query_content_dates"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -49,6 +49,6 @@
         android:text="@string/delete_database"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/qurey_content_dates"
-        app:layout_constraintTop_toBottomOf="@+id/qurey_content_dates" />
+        app:layout_constraintStart_toStartOf="@+id/query_content_dates"
+        app:layout_constraintTop_toBottomOf="@+id/query_content_dates" />
 </androidx.constraintlayout.widget.ConstraintLayout>

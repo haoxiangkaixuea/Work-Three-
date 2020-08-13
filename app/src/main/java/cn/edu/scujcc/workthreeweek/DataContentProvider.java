@@ -2,7 +2,6 @@ package cn.edu.scujcc.workthreeweek;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,11 +30,9 @@ public class DataContentProvider extends ContentProvider {
 
     private BookDBHelper bookDbHelper;
     private SQLiteDatabase db;
-    private Context mContext;
 
     @Override
     public boolean onCreate() {
-        mContext = getContext();
         bookDbHelper = new BookDBHelper(getContext(), "BookDBHelper,db", null, 1);
         return true;
     }

@@ -22,14 +22,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DatesContentActivity"
-            android:label="@string/DatesContentActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".DatumContentActivity"
+            android:label="@string/DatumContentActivity" />
         <activity
             android:name=".SQLiteActivity"
             android:label="@string/SQLiteActivity" />

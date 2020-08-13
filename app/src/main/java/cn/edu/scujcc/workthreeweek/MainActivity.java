@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Administrator
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnSQLite;
     private Button btnLitePal;
@@ -14,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnAsync;
     private Button btnIntentService;
     private Button btnDataContent;
+    private Button btnDatumContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAsync = findViewById(R.id.start_async);
         btnIntentService = findViewById(R.id.start_intent_service);
         btnDataContent = findViewById(R.id.start_data_content);
+        btnDatumContent = findViewById(R.id.start_datum_content);
 
         btnSQLite.setOnClickListener(this);
         btnLitePal.setOnClickListener(this);
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAsync.setOnClickListener(this);
         btnIntentService.setOnClickListener(this);
         btnDataContent.setOnClickListener(this);
+        btnDatumContent.setOnClickListener(this);
     }
 
     @Override
@@ -61,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.start_data_content:
                 Intent dataContentIntent = new Intent(MainActivity.this, DataContentActivity.class);
                 startActivity(dataContentIntent);
+                break;
+            case R.id.start_datum_content:
+                Intent datumContentIntent = new Intent(MainActivity.this, DatumContentActivity.class);
+                startActivity(datumContentIntent);
                 break;
             default:
                 break;

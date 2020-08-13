@@ -34,9 +34,6 @@ public class BookDBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private Context context;
 
-    //    public BookDBHelper(Context context) {
-//        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-//    }
     public BookDBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -46,9 +43,6 @@ public class BookDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_BOOK);
     }
 
-    /**
-     * 更新数据库
-     */
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
     }

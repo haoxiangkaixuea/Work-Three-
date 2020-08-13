@@ -12,22 +12,22 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * @author Administrator
  */
-public class DatesContentActivity extends AppCompatActivity {
-    private Button btuDabsInsert;
-    private Button btuDabsQuery;
-    private Button btuDabsDelete;
+public class DatumContentActivity extends AppCompatActivity {
+    private Button btnDabsInsert;
+    private Button btnDabsQuery;
+    private Button btnDabsDelete;
     private Uri uri;
     private String newId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dates_content);
+        setContentView(R.layout.activity_datum_content);
 
-        btuDabsInsert = findViewById(R.id.add_content_dates);
-        btuDabsQuery = findViewById(R.id.qurey_content_dates);
-        btuDabsDelete = findViewById(R.id.delete_content_dates);
-        btuDabsInsert.setOnClickListener(v -> {
+        btnDabsInsert = findViewById(R.id.add_content_dates);
+        btnDabsQuery = findViewById(R.id.query_content_dates);
+        btnDabsDelete = findViewById(R.id.delete_content_dates);
+        btnDabsInsert.setOnClickListener(v -> {
             uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book");
             ContentValues values = new ContentValues();
             values.put("name", "百万英镑");
@@ -36,12 +36,12 @@ public class DatesContentActivity extends AppCompatActivity {
             values.put("pages", "345245");
             Uri newUri = getContentResolver().insert(uri, values);
             newId = newUri.getPathSegments().get(1);
-            Toast.makeText(DatesContentActivity.this,
+            Toast.makeText(DatumContentActivity.this,
                     getResources().getString(R.string.add_data),
                     Toast.LENGTH_SHORT).show();
         });
 
-        btuDabsQuery.setOnClickListener(v -> {
+        btnDabsQuery.setOnClickListener(v -> {
             uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book");
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
             if (cursor != null) {
@@ -50,7 +50,7 @@ public class DatesContentActivity extends AppCompatActivity {
                     String name = cursor.getString(cursor.getColumnIndex("name"));
                     int pages = cursor.getInt(cursor.getColumnIndex("pages"));
                     double price = cursor.getDouble(cursor.getColumnIndex("price"));
-                    Toast.makeText(DatesContentActivity.this,
+                    Toast.makeText(DatumContentActivity.this,
                             "query Book:" + cursor.getInt(0) + " " + cursor.getString(1) + author + name + pages + price,
                             Toast.LENGTH_SHORT).show();
                 }
@@ -58,10 +58,10 @@ public class DatesContentActivity extends AppCompatActivity {
             cursor.close();
         });
 
-        btuDabsDelete.setOnClickListener(v -> {
+        btnDabsDelete.setOnClickListener(v -> {
             uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book" + newId);
             getContentResolver().delete(uri, null, null);
-            Toast.makeText(DatesContentActivity.this,
+            Toast.makeText(DatumContentActivity.this,
                     getResources().getString(R.string.delete_database),
                     Toast.LENGTH_SHORT).show();
         });

@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
  *     desc   :
  *     version: 1.0
  * </pre>
+ *
+ * @author Administrator
  */
 public class CategoryDBHelper extends SQLiteOpenHelper {
     public static final String CATEGORY_TABLE_NAME = "category";

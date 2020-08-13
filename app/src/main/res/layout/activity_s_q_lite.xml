@@ -8,7 +8,7 @@
     tools:context=".SQLiteActivity">
 
     <Button
-        android:id="@+id/create_sqlite_database"
+        android:id="@+id/create_s_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/add_sqlite_data"
+        android:id="@+id/add_s_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -34,11 +34,11 @@
         android:text="add_data"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/create_sqlite_database"
-        app:layout_constraintTop_toBottomOf="@+id/create_sqlite_database" />
+        app:layout_constraintStart_toStartOf="@+id/create_s_database"
+        app:layout_constraintTop_toBottomOf="@+id/create_s_database" />
 
     <Button
-        android:id="@+id/qurey_sqlite_data"
+        android:id="@+id/query_s_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -46,14 +46,14 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="qurey_data"
+        android:text="query_data"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/add_sqlite_data"
-        app:layout_constraintTop_toBottomOf="@+id/add_sqlite_data" />
+        app:layout_constraintStart_toStartOf="@+id/add_s_data"
+        app:layout_constraintTop_toBottomOf="@+id/add_s_data" />
 
     <Button
-        android:id="@+id/update_sqlite_database"
+        android:id="@+id/update_s_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -64,11 +64,11 @@
         android:text="update_database"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/qurey_sqlite_data"
-        app:layout_constraintTop_toBottomOf="@+id/qurey_sqlite_data" />
+        app:layout_constraintStart_toStartOf="@+id/query_s_data"
+        app:layout_constraintTop_toBottomOf="@+id/query_s_data" />
 
     <Button
-        android:id="@+id/delete_sqlite_database"
+        android:id="@+id/delete_s_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -79,6 +79,6 @@
         android:text="delete_database"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/update_sqlite_database"
-        app:layout_constraintTop_toBottomOf="@+id/update_sqlite_database" />
+        app:layout_constraintStart_toStartOf="@+id/update_s_database"
+        app:layout_constraintTop_toBottomOf="@+id/update_s_database" />
 </androidx.constraintlayout.widget.ConstraintLayout>

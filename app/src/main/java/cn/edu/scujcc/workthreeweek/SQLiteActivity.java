@@ -16,7 +16,7 @@ import cn.edu.scujcc.workthreeweek.data.local.CategoryDBHelper;
  * @author Administrator
  */
 public class SQLiteActivity extends AppCompatActivity {
-    private CategoryDBHelper categoryDBHelper;
+    private CategoryDBHelper categorydbhelper;
     private Button btnCreateDatabase;
     private Button btnAddDatabase;
     private Button btnUpdateDatabase;
@@ -28,18 +28,18 @@ public class SQLiteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_q_lite);
 
-        btnCreateDatabase = findViewById(R.id.create_sqlite_database);
-        categoryDBHelper = new CategoryDBHelper(this, "Category.db", null, 1);
+        btnCreateDatabase = findViewById(R.id.create_s_database);
+        categorydbhelper = new CategoryDBHelper(this, "Category.db", null, 1);
         btnCreateDatabase.setOnClickListener(v -> {
-            categoryDBHelper.getWritableDatabase();
+            categorydbhelper.getWritableDatabase();
             Toast.makeText(SQLiteActivity.this,
                     getResources().getString(R.string.create_database),
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnAddDatabase = findViewById(R.id.add_sqlite_data);
+        btnAddDatabase = findViewById(R.id.add_s_data);
         btnAddDatabase.setOnClickListener(v -> {
-            SQLiteDatabase database = categoryDBHelper.getWritableDatabase();
+            SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put("category_name", "文学类");
             values.put("category_code", "001");
@@ -50,9 +50,9 @@ public class SQLiteActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnUpdateDatabase = findViewById(R.id.update_sqlite_database);
+        btnUpdateDatabase = findViewById(R.id.update_s_database);
         btnUpdateDatabase.setOnClickListener(v -> {
-            SQLiteDatabase database = categoryDBHelper.getWritableDatabase();
+            SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put("category_code", "101");
             database.update("Category", values, "category_name=?", new String[]{"文学类"});
@@ -61,9 +61,9 @@ public class SQLiteActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnDeleteDatabase = findViewById(R.id.delete_sqlite_database);
+        btnDeleteDatabase = findViewById(R.id.delete_s_database);
         btnDeleteDatabase.setOnClickListener(v -> {
-            SQLiteDatabase database = categoryDBHelper.getWritableDatabase();
+            SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             //要删除在Book数据库中，pages大于33446的书
             database.delete("Category", "category_name = ?", new String[]{"文学类"});
             Toast.makeText(SQLiteActivity.this,
@@ -71,9 +71,9 @@ public class SQLiteActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnQueryDatabase = findViewById(R.id.qurey_sqlite_data);
+        btnQueryDatabase = findViewById(R.id.query_s_data);
         btnQueryDatabase.setOnClickListener(v -> {
-            SQLiteDatabase database = categoryDBHelper.getWritableDatabase();
+            SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             Cursor cursor = database.query("Category", null, null, null,
                     null, null, null);
             if (cursor.moveToFirst()) {

@@ -13,6 +13,9 @@ import java.util.List;
 
 import cn.edu.scujcc.workthreeweek.data.model.BookModel;
 
+/**
+ * @author Administrator
+ */
 public class LiteActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnCreateData;
     private Button btnAddData;

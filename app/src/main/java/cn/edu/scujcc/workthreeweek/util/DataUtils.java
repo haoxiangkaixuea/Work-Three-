@@ -66,7 +66,8 @@ public class DataUtils {
                 String author = cursor.getString(cursor.getColumnIndex("author"));
                 double price = cursor.getDouble(cursor.getColumnIndex("price"));
                 int pages = cursor.getInt(cursor.getColumnIndex("pages"));
-            } while (cursor.moveToFirst());
+            } while (cursor.moveToNext());
         }
+        cursor.close();
     }
 }
