@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.start_s_q_lite:
-                Intent sqLiteIntent = new Intent(MainActivity.this, SQLiteActivity.class);
-                startActivity(sqLiteIntent);
-                break;
             case R.id.start_lite_pal:
                 Intent litePalIntent = new Intent(MainActivity.this, LiteActivity.class);
                 startActivity(litePalIntent);
+                break;
+            case R.id.start_s_q_lite:
+                Intent sqLiteIntent = new Intent(MainActivity.this, SQLiteActivity.class);
+                startActivity(sqLiteIntent);
                 break;
             case R.id.start_handler:
                 Intent handlerIntent = new Intent(MainActivity.this, HandlerActivity.class);
