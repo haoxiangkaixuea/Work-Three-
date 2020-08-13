@@ -17,7 +17,7 @@ public class AsyncTaskActivity extends AppCompatActivity {
     public static final int PROGRESSBAR_MAX = 100;
     private Button btnStart;
     private ProgressBar pb;
-    private TextView tvState;
+    private TextView tvStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,8 @@ public class AsyncTaskActivity extends AppCompatActivity {
 
         btnStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
-        tvState = findViewById(R.id.tv_state);
-        final ProgressBarTask progressBarTask = new ProgressBarTask(pb, tvState);
+        tvStatus = findViewById(R.id.tv_state);
+        final ProgressBarTask progressBarTask = new ProgressBarTask(pb, tvStatus);
         btnStart.setOnClickListener(v -> {
             progressBarTask.execute();
         });

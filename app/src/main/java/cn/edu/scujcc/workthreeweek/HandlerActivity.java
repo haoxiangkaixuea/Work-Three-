@@ -27,7 +27,7 @@ public class HandlerActivity extends AppCompatActivity {
     Boolean isRunning = true;
     private Button btnStart;
     private ProgressBar pb;
-    private TextView tvState;
+    private TextView tvStatus;
     public Handler updateBarHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
@@ -36,7 +36,7 @@ public class HandlerActivity extends AppCompatActivity {
                     pb.setProgress(msg.arg1);
                     break;
                 case PROGRESSBAR_END:
-                    tvState.setText(getResources().getString(R.string.progress_end));
+                    tvStatus.setText(getResources().getString(R.string.progress_end));
                     pb.setVisibility(View.GONE);
                     pb.setProgress(msg.arg1);
                     break;
@@ -54,9 +54,9 @@ public class HandlerActivity extends AppCompatActivity {
 
         btnStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
-        tvState = findViewById(R.id.tv_state);
+        tvStatus = findViewById(R.id.tv_state);
         btnStart.setOnClickListener(v -> {
-            tvState.setText(getResources().getString(R.string.progress_star));
+            tvStatus.setText(getResources().getString(R.string.progress_star));
             pb.setVisibility(View.VISIBLE);
             doWork();
         });
@@ -91,7 +91,6 @@ public class HandlerActivity extends AppCompatActivity {
                 if (i > 100) {
                     isRunning = false;
                     msg.what = PROGRESSBAR_END;
-                    onDestroy();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

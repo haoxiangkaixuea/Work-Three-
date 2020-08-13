@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -55,7 +54,7 @@ public class SQLiteActivity extends AppCompatActivity {
             SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put("category_code", "101");
-            database.update("Category", values, "category_name=?", new String[]{"文学类"});
+            database.update("Category", values, "category_name = ?", new String[]{"文学类"});
             Toast.makeText(SQLiteActivity.this,
                     getResources().getString(R.string.update_database),
                     Toast.LENGTH_SHORT).show();
@@ -78,11 +77,10 @@ public class SQLiteActivity extends AppCompatActivity {
                     null, null, null);
             if (cursor.moveToFirst()) {
                 do {
-                    String category_name = cursor.getString(cursor.getColumnIndex("category_name"));
-                    String category_code = cursor.getString(cursor.getColumnIndex("category_code"));
-                    Log.d("name+code", category_name + category_code);
+                    String categoryName = cursor.getString(cursor.getColumnIndex("category_name"));
+                    String categoryCode = cursor.getString(cursor.getColumnIndex("category_code"));
                     Toast.makeText(SQLiteActivity.this,
-                            getResources().getString(R.string.query_database) + category_name + category_code,
+                            getResources().getString(R.string.query_database) + categoryName + categoryCode,
                             Toast.LENGTH_SHORT).show();
                 } while (cursor.moveToNext());
             }

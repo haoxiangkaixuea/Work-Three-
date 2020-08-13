@@ -23,7 +23,7 @@ public class IntentServiceActivity extends AppCompatActivity {
     private MyLocalBroadcastReceive myLocalBroadcastReceive;
     private Button btnStart;
     private ProgressBar pb;
-    private TextView tvState;
+    private TextView tvStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class IntentServiceActivity extends AppCompatActivity {
 
         btnStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
-        tvState = findViewById(R.id.tv_state);
+        tvStatus = findViewById(R.id.tv_state);
         initBroadcast();
         btnStart.setOnClickListener(v -> {
             pb.setVisibility(View.VISIBLE);
@@ -68,9 +68,9 @@ public class IntentServiceActivity extends AppCompatActivity {
             if (ACTION.equals(intent.getAction())) {
                 int progress = intent.getIntExtra("progress", 0);
                 if (progress > 0 && progress < PROGRESSBAR_MAX) {
-                    tvState.setText(getResources().getString(R.string.progress_star));
+                    tvStatus.setText(getResources().getString(R.string.progress_star));
                 } else if (progress >= PROGRESSBAR_MAX) {
-                    tvState.setText(getResources().getString(R.string.progress_end));
+                    tvStatus.setText(getResources().getString(R.string.progress_end));
                     pb.setVisibility(View.GONE);
                 }
                 pb.setProgress(progress);

@@ -44,6 +44,6 @@ public class LitePalUtils {
     }
 
     public void queryData() {
-        List<BookModel> firstBook = (List<BookModel>) LitePal.findFirst(BookModel.class);
+        List<BookModel> firstBook = LitePal.findAll(BookModel.class);
     }
 }
