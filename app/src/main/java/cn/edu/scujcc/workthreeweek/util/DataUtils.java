@@ -12,6 +12,10 @@ import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
 public class DataUtils {
     private DBHelper myDbHelper;
 
+    public DataUtils(DBHelper myDbHelper) {
+        this.myDbHelper = myDbHelper;
+    }
+
     public void addData() {
         SQLiteDatabase database = myDbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -23,6 +27,7 @@ public class DataUtils {
         values.put("price", "23");
         values.put("pages", "123456");
         database.insert("Book", null, values);
+        values.clear();
     }
 
     public void addSecondData() {

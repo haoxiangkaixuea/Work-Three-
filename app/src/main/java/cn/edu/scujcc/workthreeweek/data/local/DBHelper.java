@@ -3,6 +3,7 @@ package cn.edu.scujcc.workthreeweek.data.local;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 /**
  * @author Administrator
@@ -13,6 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     public static final String BOOK_TABLE_NAME = "book";
     public static final String CATEGORY_TABLE_NAME = "category";
+    private Context context;
     /**
      * 把数据库创建定义为一个字符串常量
      * 创建图书数据库
@@ -47,6 +49,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_BOOK);
+        Toast.makeText(context, "数据库创建成功", Toast.LENGTH_SHORT).show();
         sqLiteDatabase.execSQL(CREATE_CATEGORY);
     }
 

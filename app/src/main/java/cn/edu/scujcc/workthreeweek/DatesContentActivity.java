@@ -15,16 +15,18 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DatesContentActivity extends AppCompatActivity {
     private Button btuDabsInsert;
     private Button btuDabsQuery;
+    private Button btuDabsDelete;
     private Uri uri;
     private String newId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datas_content);
+        setContentView(R.layout.activity_dates_content);
 
-        btuDabsInsert = findViewById(R.id.add_content_datas);
-        btuDabsQuery = findViewById(R.id.qurey_content_datas);
+        btuDabsInsert = findViewById(R.id.add_content_dates);
+        btuDabsQuery = findViewById(R.id.qurey_content_dates);
+        btuDabsDelete = findViewById(R.id.delete_content_dates);
         btuDabsInsert.setOnClickListener(v -> {
             uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book");
             ContentValues values = new ContentValues();
@@ -57,6 +59,13 @@ public class DatesContentActivity extends AppCompatActivity {
                 }
             }
             cursor.close();
+        });
+        btuDabsDelete.setOnClickListener(v -> {
+            uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book" + newId);
+            getContentResolver().delete(uri, null, null);
+            Toast.makeText(DatesContentActivity.this,
+                    getResources().getString(R.string.delete_database),
+                    Toast.LENGTH_SHORT).show();
         });
     }
 }

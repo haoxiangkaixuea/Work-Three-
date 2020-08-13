@@ -11,6 +11,7 @@
     <string name="NewHandlerActivity">NewHandlerActivity</string>
     <string name="DataContentActivity">DataContentActivity</string>
     <string name="DatesContentActivity">DatesContentActivity</string>
+    <string name="SQLiteActivity">SQLiteActivity</string>
     <string name="create_database">创建数据库成功</string>
     <string name="add_data">添加数据成功</string>
     <string name="update_database">更新数据成功</string>

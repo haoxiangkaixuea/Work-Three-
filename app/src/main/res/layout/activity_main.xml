@@ -5,81 +5,99 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_back"
-    tools:context=".LitePalActivity">
+    tools:context=".MainActivity">
+
 
     <Button
-        android:id="@+id/create_lite_database"
+        android:id="@+id/start_lite_pal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="create_database"
+        android:text="start_lite_pal"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/add_lite_data"
+        android:id="@+id/start_s_q_lite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="add_data"
+        android:text="start_s_q_lite"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/create_lite_database"
-        app:layout_constraintTop_toBottomOf="@+id/create_lite_database" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_lite_pal" />
 
     <Button
-        android:id="@+id/query_lite_data"
+        android:id="@+id/start_handler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="query_data"
+        android:text="start_handler"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/delete_lite_database"
-        app:layout_constraintTop_toBottomOf="@+id/delete_lite_database" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_s_q_lite" />
 
     <Button
-        android:id="@+id/update_lite_database"
+        android:id="@+id/start_data_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="update_database"
+        android:text="start_data_content"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/add_lite_data"
-        app:layout_constraintTop_toBottomOf="@+id/add_lite_data" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_intent_service" />
 
     <Button
-        android:id="@+id/delete_lite_database"
+        android:id="@+id/start_async"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_img"
         android:focusable="true"
-        android:text="delete_database"
+        android:text="start_async"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/update_lite_database"
-        app:layout_constraintTop_toBottomOf="@+id/update_lite_database" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_handler" />
 
+    <Button
+        android:id="@+id/start_intent_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_img"
+        android:focusable="true"
+        android:text="start_intent_service"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_async" />
 </androidx.constraintlayout.widget.ConstraintLayout>
