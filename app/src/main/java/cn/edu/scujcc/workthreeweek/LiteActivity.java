@@ -12,7 +12,6 @@ import org.litepal.LitePal;
 import java.util.List;
 
 import cn.edu.scujcc.workthreeweek.data.model.BookModel;
-import cn.edu.scujcc.workthreeweek.util.LitePalUtils;
 
 public class LiteActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnCreateData;
@@ -49,8 +48,8 @@ public class LiteActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.add_data:
                 BookModel bookModel = new BookModel();
-                bookModel.setName("悲惨世界");
-                bookModel.setAuthor("雨果");
+                bookModel.setName("百万英镑");
+                bookModel.setAuthor("马克吐温");
                 bookModel.setPages(52554);
                 bookModel.setPrice(43.5);
                 bookModel.save();
@@ -59,8 +58,9 @@ public class LiteActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.update_data:
-                LitePalUtils litePalUtil = new LitePalUtils();
-                litePalUtil.updateData();
+                BookModel bookMod = new BookModel();
+                bookMod.setPrice(10.9);
+                bookMod.updateAll("name= ? and  price=?", "百万英镑", "43.5");
                 Toast.makeText(LiteActivity.this,
                         getResources().getString(R.string.update_database),
                         Toast.LENGTH_SHORT).show();

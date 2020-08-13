@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
+import cn.edu.scujcc.workthreeweek.data.local.BookDBHelper;
 
 /**
  * @author Administrator
@@ -17,9 +17,7 @@ import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
 public class DataContentProvider extends ContentProvider {
     public static final String AUTHORITY = "cn.edu.scujcc.workthreeweek";
     public static final int BOOK_CODE = 0;
-    public static final int CATEGORY_CODE = 1;
     public static final int BOOKS_CODE = 2;
-    public static final int CATEGORIES_CODE = 3;
     /**
      * URI_MATCHER:在ContentProvider 中注册URI
      */
@@ -28,19 +26,17 @@ public class DataContentProvider extends ContentProvider {
     static {
         URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         URI_MATCHER.addURI(AUTHORITY, "book", BOOK_CODE);
-        URI_MATCHER.addURI(AUTHORITY, "category", CATEGORY_CODE);
         URI_MATCHER.addURI(AUTHORITY, "books", BOOKS_CODE);
-        URI_MATCHER.addURI(AUTHORITY, "categories", CATEGORIES_CODE);
     }
 
-    private DBHelper dbHelper;
+    private BookDBHelper bookDbHelper;
     private SQLiteDatabase db;
     private Context mContext;
 
     @Override
     public boolean onCreate() {
         mContext = getContext();
-        dbHelper = new DBHelper(getContext());
+        bookDbHelper = new BookDBHelper(getContext(), "BookDBHelper,db", null, 1);
         return true;
     }
 
@@ -49,22 +45,15 @@ public class DataContentProvider extends ContentProvider {
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        db = dbHelper.getWritableDatabase();
+        db = bookDbHelper.getWritableDatabase();
         int deleteRows = 0;
         switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
-                deleteRows = db.delete("book", selection, selectionArgs);
+                deleteRows = db.delete("Book", selection, selectionArgs);
                 break;
             case BOOKS_CODE:
                 String bookId = uri.getPathSegments().get(1);
-                deleteRows = db.delete("book", "id=?", new String[]{bookId});
-                break;
-            case CATEGORY_CODE:
-                deleteRows = db.delete("category", selection, selectionArgs);
-                break;
-            case CATEGORIES_CODE:
-                String categoryId = uri.getPathSegments().get(1);
-                deleteRows = db.delete("category", "id=?", new String[]{categoryId});
+                deleteRows = db.delete("Book", "id=?", new String[]{bookId});
                 break;
             default:
                 break;
@@ -82,18 +71,13 @@ public class DataContentProvider extends ContentProvider {
      */
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        db = dbHelper.getWritableDatabase();
+        db = bookDbHelper.getWritableDatabase();
         Uri uriReturn = null;
         switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
             case BOOKS_CODE:
-                long newBookId = db.insert("book", null, values);
+                long newBookId = db.insert("Book", null, values);
                 uriReturn = Uri.parse("content://" + AUTHORITY + "/book/" + newBookId);
-                break;
-            case CATEGORY_CODE:
-            case CATEGORIES_CODE:
-                long newCategoryId = db.insert("book", null, values);
-                uriReturn = Uri.parse("content://" + AUTHORITY + "/category/" + newCategoryId);
                 break;
             default:
                 break;
@@ -107,22 +91,15 @@ public class DataContentProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
-        db = dbHelper.getReadableDatabase();
+        db = bookDbHelper.getReadableDatabase();
         Cursor cursor = null;
         switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
-                cursor = db.query("book", projection, selection, selectionArgs, null, null, sortOrder);
+                cursor = db.query("Book", projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             case BOOKS_CODE:
                 String bookId = uri.getPathSegments().get(1);
-                cursor = db.query("book", projection, "id=?", new String[]{bookId}, null, null, sortOrder);
-                break;
-            case CATEGORY_CODE:
-                cursor = db.query("category", projection, selection, selectionArgs, null, null, sortOrder);
-                break;
-            case CATEGORIES_CODE:
-                String categoryId = uri.getPathSegments().get(1);
-                cursor = db.query("category", projection, "id=?", new String[]{categoryId}, null, null, sortOrder);
+                cursor = db.query("Book", projection, "id=?", new String[]{bookId}, null, null, sortOrder);
                 break;
             default:
                 break;
@@ -135,7 +112,7 @@ public class DataContentProvider extends ContentProvider {
      */
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        db = dbHelper.getWritableDatabase();
+        db = bookDbHelper.getWritableDatabase();
         int updateRows = 0;
         switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
@@ -144,13 +121,6 @@ public class DataContentProvider extends ContentProvider {
             case BOOKS_CODE:
                 String bookId = uri.getPathSegments().get(1);
                 updateRows = db.update("book", values, "id=?", new String[]{bookId});
-                break;
-            case CATEGORY_CODE:
-                updateRows = db.update("category", values, selection, selectionArgs);
-                break;
-            case CATEGORIES_CODE:
-                String categoryId = uri.getPathSegments().get(1);
-                updateRows = db.update("category", values, "id=?", new String[]{categoryId});
                 break;
             default:
                 break;

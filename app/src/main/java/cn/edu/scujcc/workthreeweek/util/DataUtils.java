@@ -4,20 +4,20 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import cn.edu.scujcc.workthreeweek.data.local.DBHelper;
+import cn.edu.scujcc.workthreeweek.data.local.BookDBHelper;
 
 /**
  * @author Administrator
  */
 public class DataUtils {
-    private DBHelper myDbHelper;
+    private BookDBHelper myBookDbHelper;
 
-    public DataUtils(DBHelper myDbHelper) {
-        this.myDbHelper = myDbHelper;
+    public DataUtils(BookDBHelper myBookDbHelper) {
+        this.myBookDbHelper = myBookDbHelper;
     }
 
     public void addData() {
-        SQLiteDatabase database = myDbHelper.getWritableDatabase();
+        SQLiteDatabase database = myBookDbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         //myDbHelper = new MyDatabaseHelper(this, "BookStore", null, 1);
         //更新了数据库，版本version改为了2
@@ -31,7 +31,7 @@ public class DataUtils {
     }
 
     public void addSecondData() {
-        SQLiteDatabase database = myDbHelper.getWritableDatabase();
+        SQLiteDatabase database = myBookDbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", "红楼梦");
         values.put("author", "曹雪芹");
@@ -42,7 +42,7 @@ public class DataUtils {
     }
 
     public void updateData() {
-        SQLiteDatabase database = myDbHelper.getWritableDatabase();
+        SQLiteDatabase database = myBookDbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("price", "22");
         //?表示一个占位符，表示更新所有name=？的行，通过第四个参数提供的字符串作为指定的相应的内容
@@ -51,13 +51,13 @@ public class DataUtils {
     }
 
     public void deleteData() {
-        SQLiteDatabase database = myDbHelper.getWritableDatabase();
+        SQLiteDatabase database = myBookDbHelper.getWritableDatabase();
         //要删除在Book数据库中，pages大于33446的书
         database.delete("Book", "pages > ?", new String[]{"33446"});
     }
 
     public void queryData() {
-        SQLiteDatabase database = myDbHelper.getWritableDatabase();
+        SQLiteDatabase database = myBookDbHelper.getWritableDatabase();
         Cursor cursor = database.query("Book", null, null, null,
                 null, null, null);
         if (cursor.moveToFirst()) {

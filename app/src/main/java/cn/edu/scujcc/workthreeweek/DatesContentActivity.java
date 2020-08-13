@@ -51,15 +51,13 @@ public class DatesContentActivity extends AppCompatActivity {
                     int pages = cursor.getInt(cursor.getColumnIndex("pages"));
                     double price = cursor.getDouble(cursor.getColumnIndex("price"));
                     Toast.makeText(DatesContentActivity.this,
-                            author + name + pages + price,
-                            Toast.LENGTH_SHORT).show();
-                    Toast.makeText(DatesContentActivity.this,
-                            "query book:" + cursor.getInt(0) + " " + cursor.getString(1),
+                            "query Book:" + cursor.getInt(0) + " " + cursor.getString(1) + author + name + pages + price,
                             Toast.LENGTH_SHORT).show();
                 }
             }
             cursor.close();
         });
+
         btuDabsDelete.setOnClickListener(v -> {
             uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book" + newId);
             getContentResolver().delete(uri, null, null);
