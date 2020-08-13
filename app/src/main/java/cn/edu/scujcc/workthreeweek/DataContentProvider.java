@@ -113,11 +113,11 @@ public class DataContentProvider extends ContentProvider {
         int updateRows = 0;
         switch (URI_MATCHER.match(uri)) {
             case BOOK_CODE:
-                updateRows = db.update("book", values, selection, selectionArgs);
+                updateRows = db.update("Book", values, selection, selectionArgs);
                 break;
             case BOOKS_CODE:
                 String bookId = uri.getPathSegments().get(1);
-                updateRows = db.update("book", values, "id=?", new String[]{bookId});
+                updateRows = db.update("Book", values, "id=?", new String[]{bookId});
                 break;
             default:
                 break;
