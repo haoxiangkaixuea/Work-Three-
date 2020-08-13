@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(sqLiteIntent);
                 break;
             case R.id.start_lite_pal:
-                Intent litePalIntent = new Intent(MainActivity.this, LitePalActivity.class);
+                Intent litePalIntent = new Intent(MainActivity.this, LiteActivity.class);
                 startActivity(litePalIntent);
                 break;
             case R.id.start_handler:

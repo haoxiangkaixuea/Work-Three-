@@ -48,8 +48,12 @@ public class LiteActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.add_data:
-                LitePalUtils litePalUtils = new LitePalUtils();
-                litePalUtils.addData();
+                BookModel bookModel = new BookModel();
+                bookModel.setName("悲惨世界");
+                bookModel.setAuthor("雨果");
+                bookModel.setPages(52554);
+                bookModel.setPrice(43.5);
+                bookModel.save();
                 Toast.makeText(LiteActivity.this,
                         getResources().getString(R.string.add_data),
                         Toast.LENGTH_SHORT).show();
@@ -62,7 +66,7 @@ public class LiteActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.query_data:
-                List<BookModel> books = (List<BookModel>) LitePal.findFirst(BookModel.class);
+                List<BookModel> books = LitePal.findAll(BookModel.class);
                 for (BookModel book : books) {
                     Toast.makeText(LiteActivity.this,
                             getResources().getString(R.string.query_database) + book.getName() + book.getAuthor()
@@ -71,7 +75,7 @@ public class LiteActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.delete_data:
-                LitePal.deleteAll(BookModel.class, "price > ?", "40");
+                LitePal.deleteAll(BookModel.class, "price < ?", "40");
                 Toast.makeText(LiteActivity.this,
                         getResources().getString(R.string.delete_database),
                         Toast.LENGTH_SHORT).show();
