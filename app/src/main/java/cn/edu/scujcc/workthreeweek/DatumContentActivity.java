@@ -54,8 +54,8 @@ public class DatumContentActivity extends AppCompatActivity {
                             "query Book:" + cursor.getInt(0) + " " + cursor.getString(1) + author + name + pages + price,
                             Toast.LENGTH_SHORT).show();
                 }
+                cursor.close();
             }
-            cursor.close();
         });
 
         btnDabsDelete.setOnClickListener(v -> {

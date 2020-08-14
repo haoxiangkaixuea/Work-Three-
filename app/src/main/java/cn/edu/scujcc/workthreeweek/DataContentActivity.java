@@ -26,9 +26,9 @@ public class DataContentActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_content);
 
-        btnInsert = (Button) findViewById(R.id.add_content_data);
-        btnQuery = (Button) findViewById(R.id.query_content_data);
-        btnUpdate = (Button) findViewById(R.id.update_content_database);
+        btnInsert = findViewById(R.id.add_content_data);
+        btnQuery = findViewById(R.id.query_content_data);
+        btnUpdate = findViewById(R.id.update_content_database);
         btnDelete = findViewById(R.id.delete_content_database);
 
         btnInsert.setOnClickListener(this);
@@ -73,8 +73,9 @@ public class DataContentActivity extends AppCompatActivity implements View.OnCli
                                 author + name + pages + price,
                                 Toast.LENGTH_SHORT).show();
                     }
+                    cursor.close();
                 }
-                cursor.close();
+
                 break;
             case R.id.update_content_database:
                 uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book" + newId);
