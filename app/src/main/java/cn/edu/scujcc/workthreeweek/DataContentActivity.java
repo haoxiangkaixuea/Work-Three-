@@ -75,7 +75,6 @@ public class DataContentActivity extends AppCompatActivity implements View.OnCli
                     }
                     cursor.close();
                 }
-
                 break;
             case R.id.update_content_database:
                 uri = Uri.parse("content://cn.edu.scujcc.workthreeweek/book" + newId);

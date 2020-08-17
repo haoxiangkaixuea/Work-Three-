@@ -5,14 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * <pre>
- *     author : Administrator
- *     e-mail : xxx@xx
- *     time   : 2020/08/09
- *     desc   :
- *     version: 1.0
- * </pre>
- *
  * @author Administrator
  */
 public class ContentDbHelper extends SQLiteOpenHelper {

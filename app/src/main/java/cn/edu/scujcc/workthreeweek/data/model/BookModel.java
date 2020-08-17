@@ -3,14 +3,6 @@ package cn.edu.scujcc.workthreeweek.data.model;
 import org.litepal.crud.LitePalSupport;
 
 /**
- * <pre>
- *     author : Administrator
- *     e-mail : xxx@xx
- *     time   : 2020/08/06
- *     desc   :
- *     version: 1.0
- * </pre>
- *
  * @author Administrator
  */
 public class BookModel extends LitePalSupport {

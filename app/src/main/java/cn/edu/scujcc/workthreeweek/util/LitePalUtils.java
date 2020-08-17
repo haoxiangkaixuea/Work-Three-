@@ -7,14 +7,6 @@ import java.util.List;
 import cn.edu.scujcc.workthreeweek.data.model.BookModel;
 
 /**
- * <pre>
- *     author : Administrator
- *     e-mail : xxx@xx
- *     time   : 2020/08/06
- *     desc   :
- *     version: 1.0
- * </pre>
- *
  * @author Administrator
  */
 public class LitePalUtils {

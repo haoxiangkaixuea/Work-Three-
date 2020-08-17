@@ -18,7 +18,6 @@ import androidx.annotation.Nullable;
  * @author Administrator
  */
 public class CategoryDBHelper extends SQLiteOpenHelper {
-    public static final String CATEGORY_TABLE_NAME = "category";
     /**
      * 创建图书类别数据库
      * CREATE_CATEGORY 图书类别数据库

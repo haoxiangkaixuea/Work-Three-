@@ -8,14 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
- * <pre>
- *     author : ylj
- *     e-mail : xxx@xx
- *     time   : 2020/08/06
- *     desc   : IntentService启动ProgressBar
- *     version: 1.0
- * </pre>
- *
  * @author Administrator
  */
 public class MyIntentService extends IntentService {
