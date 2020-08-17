@@ -33,10 +33,9 @@ public class AsyncTaskActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class ProgressBarTask extends AsyncTask<Void, Integer, Boolean> {
-        @SuppressLint("StaticFieldLeak")
         private TextView textView;
-        @SuppressLint("StaticFieldLeak")
         private ProgressBar progressBar;
 
         public ProgressBarTask(ProgressBar progressBar, TextView textView) {

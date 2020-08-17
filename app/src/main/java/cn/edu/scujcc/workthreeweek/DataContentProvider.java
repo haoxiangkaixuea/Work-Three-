@@ -12,7 +12,6 @@ import cn.edu.scujcc.workthreeweek.data.local.BookDBHelper;
 /**
  * @author Administrator
  */
-
 public class DataContentProvider extends ContentProvider {
     public static final String AUTHORITY = "cn.edu.scujcc.workthreeweek";
     public static final int BOOK_CODE = 0;
