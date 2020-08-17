@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.scujcc.workthreeweek">
 
-    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 声明本应用可允许通信的权限（全权限） -->
-    <uses-permission android:name="scut.carson_ho.PROVIDER" />
-
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
