@@ -16,19 +16,18 @@ public class LitePalUtils {
     }
 
     public void addData() {
-        //name和duration是你要存入的重复的数据
         BookModel bookModel = new BookModel();
-        bookModel.setName("悲惨世界");
-        bookModel.setAuthor("雨果");
+        bookModel.setName("百万英镑");
+        bookModel.setAuthor("马克吐温");
         bookModel.setPages(52554);
         bookModel.setPrice(43.5);
         bookModel.save();
     }
 
     public void updateData() {
-        BookModel bookModel = new BookModel();
-        bookModel.setPrice(10.9);
-        bookModel.updateAll("name= ?", "悲惨世界");
+        BookModel bookMod = new BookModel();
+        bookMod.setPrice(10.9);
+        bookMod.updateAll("name= ? and  price=?", "百万英镑", "43.5");
     }
 
     public void deleteData() {
