@@ -16,18 +16,13 @@ import cn.edu.scujcc.workthreeweek.data.local.CategoryDBHelper;
  */
 public class SQLiteActivity extends AppCompatActivity {
     private CategoryDBHelper categorydbhelper;
-    private Button btnCreateDatabase;
-    private Button btnAddDatabase;
-    private Button btnUpdateDatabase;
-    private Button btnQueryDatabase;
-    private Button btnDeleteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_q_lite);
 
-        btnCreateDatabase = findViewById(R.id.create_s_database);
+        Button btnCreateDatabase = findViewById(R.id.create_s_database);
         categorydbhelper = new CategoryDBHelper(this, "Category.db", null, 1);
         btnCreateDatabase.setOnClickListener(v -> {
             categorydbhelper.getWritableDatabase();
@@ -36,7 +31,7 @@ public class SQLiteActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnAddDatabase = findViewById(R.id.add_s_data);
+        Button btnAddDatabase = findViewById(R.id.add_s_data);
         btnAddDatabase.setOnClickListener(v -> {
             SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             ContentValues values = new ContentValues();
@@ -49,7 +44,7 @@ public class SQLiteActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnUpdateDatabase = findViewById(R.id.update_s_database);
+        Button btnUpdateDatabase = findViewById(R.id.update_s_database);
         btnUpdateDatabase.setOnClickListener(v -> {
             SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             ContentValues values = new ContentValues();
@@ -60,7 +55,7 @@ public class SQLiteActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnDeleteDatabase = findViewById(R.id.delete_s_database);
+        Button btnDeleteDatabase = findViewById(R.id.delete_s_database);
         btnDeleteDatabase.setOnClickListener(v -> {
             SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             //要删除在Book数据库中，pages大于33446的书
@@ -70,7 +65,7 @@ public class SQLiteActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnQueryDatabase = findViewById(R.id.query_s_data);
+        Button btnQueryDatabase = findViewById(R.id.query_s_data);
         btnQueryDatabase.setOnClickListener(v -> {
             SQLiteDatabase database = categorydbhelper.getWritableDatabase();
             Cursor cursor = database.query("Category", null, null, null,
