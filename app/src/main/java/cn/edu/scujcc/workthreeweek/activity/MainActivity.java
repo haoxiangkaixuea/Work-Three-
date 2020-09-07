@@ -1,4 +1,4 @@
-package cn.edu.scujcc.workthreeweek;
+package cn.edu.scujcc.workthreeweek.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,32 +7,29 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import cn.edu.scujcc.workthreeweek.HandlerActivity;
+import cn.edu.scujcc.workthreeweek.IntentServiceActivity;
+import cn.edu.scujcc.workthreeweek.R;
+
 /**
  * @author Administrator
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btnSQLite;
-    private Button btnLitePal;
-    private Button btnHandler;
-    private Button btnAsync;
-    private Button btnIntentService;
-    private Button btnDataContent;
-    private Button btnDatumContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnSQLite = findViewById(R.id.start_s_q_lite);
-        btnLitePal = findViewById(R.id.start_lite_pal);
-        btnHandler = findViewById(R.id.start_handler);
-        btnAsync = findViewById(R.id.start_async);
-        btnIntentService = findViewById(R.id.start_intent_service);
-        btnDataContent = findViewById(R.id.start_data_content);
-        btnDatumContent = findViewById(R.id.start_datum_content);
+        Button btnSqLite = findViewById(R.id.start_s_q_lite);
+        Button btnLitePal = findViewById(R.id.start_lite_pal);
+        Button btnHandler = findViewById(R.id.start_handler);
+        Button btnAsync = findViewById(R.id.start_async);
+        Button btnIntentService = findViewById(R.id.start_intent_service);
+        Button btnDataContent = findViewById(R.id.start_data_content);
+        Button btnDatumContent = findViewById(R.id.start_datum_content);
 
-        btnSQLite.setOnClickListener(this);
+        btnSqLite.setOnClickListener(this);
         btnLitePal.setOnClickListener(this);
         btnHandler.setOnClickListener(this);
         btnAsync.setOnClickListener(this);

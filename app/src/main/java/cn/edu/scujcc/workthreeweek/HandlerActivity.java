@@ -25,7 +25,6 @@ public class HandlerActivity extends AppCompatActivity {
     public static final int PROGRESSBAR_STAR = 1;
     public static final int PROGRESSBAR_END = -1;
     Boolean isRunning = true;
-    private Button btnStart;
     private ProgressBar pb;
     private TextView tvStatus;
     public Handler updateBarHandler = new Handler(Looper.getMainLooper()) {
@@ -52,7 +51,7 @@ public class HandlerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handler);
 
-        btnStart = findViewById(R.id.bt_start);
+        Button btnStart = findViewById(R.id.bt_start);
         pb = findViewById(R.id.pb);
         tvStatus = findViewById(R.id.tv_state);
         btnStart.setOnClickListener(v -> {
@@ -73,7 +72,7 @@ public class HandlerActivity extends AppCompatActivity {
                 .setNameFormat("demo-pool-%d").build();
         ExecutorService singleThreadPool = new ThreadPoolExecutor(1, 1,
                 0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+                new LinkedBlockingQueue<>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
 
         singleThreadPool.execute(this::timerTaskThread);
         singleThreadPool.shutdown();

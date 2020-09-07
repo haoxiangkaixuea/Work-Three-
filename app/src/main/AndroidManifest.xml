@@ -10,8 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LiteActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.LiteActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,14 +19,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DatumContentActivity"
+            android:name=".activity.DatumContentActivity"
             android:label="@string/DatumContentActivity"
             android:process="cn.edu.scujcc.workthreeweek.remote" />
         <activity
-            android:name=".SQLiteActivity"
+            android:name=".activity.SQLiteActivity"
             android:label="@string/SQLiteActivity" />
         <activity
-            android:name=".DataContentActivity"
+            android:name=".activity.DataContentActivity"
             android:label="@string/DataContentActivity" />
         <activity
             android:name=".IntentServiceActivity"
@@ -35,7 +35,7 @@
             android:name=".HandlerActivity"
             android:label="@string/handler_activity" />
         <activity
-            android:name=".AsyncTaskActivity"
+            android:name=".activity.AsyncTaskActivity"
             android:label="@string/async_task" />
 
         <service android:name=".MyIntentService" />

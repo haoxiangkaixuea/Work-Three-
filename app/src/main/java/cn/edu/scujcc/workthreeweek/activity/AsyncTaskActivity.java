@@ -1,4 +1,4 @@
-package cn.edu.scujcc.workthreeweek;
+package cn.edu.scujcc.workthreeweek.activity;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
@@ -10,27 +10,24 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import cn.edu.scujcc.workthreeweek.R;
+
 /**
  * @author Administrator
  */
 public class AsyncTaskActivity extends AppCompatActivity {
     public static final int PROGRESSBAR_MAX = 100;
-    private Button btnStart;
-    private ProgressBar pb;
-    private TextView tvStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_async_task);
 
-        btnStart = findViewById(R.id.bt_start);
-        pb = findViewById(R.id.pb);
-        tvStatus = findViewById(R.id.tv_state);
-        final ProgressBarTask progressBarTask = new ProgressBarTask(pb, tvStatus);
-        btnStart.setOnClickListener(v -> {
-            progressBarTask.execute();
-        });
+        Button btnStart = findViewById(R.id.bt_start);
+        ProgressBar pb = findViewById(R.id.pb);
+        TextView tvStatus = findViewById(R.id.tv_state);
+        ProgressBarTask progressBarTask = new ProgressBarTask(pb, tvStatus);
+        btnStart.setOnClickListener(v -> progressBarTask.execute());
     }
 
     @SuppressLint("StaticFieldLeak")

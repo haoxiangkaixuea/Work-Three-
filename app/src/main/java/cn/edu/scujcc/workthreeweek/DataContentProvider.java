@@ -14,7 +14,13 @@ import cn.edu.scujcc.workthreeweek.data.local.BookDBHelper;
  */
 public class DataContentProvider extends ContentProvider {
     public static final String AUTHORITY = "cn.edu.scujcc.workthreeweek";
+    /**
+     * 访问全部数据
+     */
     public static final int BOOK_CODE = 0;
+    /**
+     * 访问单条数据
+     */
     public static final int BOOKS_CODE = 2;
     /**
      * URI_MATCHER:在ContentProvider 中注册URI
